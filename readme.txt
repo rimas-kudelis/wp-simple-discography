@@ -30,9 +30,9 @@ For each album, you will be able to provide the following data:
 
 * parameter :
 
-* * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
-* * date_format : default : "y" value : date format of date function of PHP
-* * order_by : default : "release" value : "rand", "title", "date", "modified", "release"
+** posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
+** date_format : default : "y" value : date format of date function of PHP
+** order_by : default : "release" value : "rand", "title", "date", "modified", "release"
 * * order : default : "DESC" value : "DESC", "ASC"
 * * dynamic : default : 1 value : 0, 1
 * * show_song : default : 1 value : 0, 1
