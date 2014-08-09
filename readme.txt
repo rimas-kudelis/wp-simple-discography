@@ -25,17 +25,18 @@ For each album, you will be able to provide the following data:
 
 =Shortcode=
 
-1 sidi-discography :
+1. sidi-discography :
+
 [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1]
 
-* parameter :
+* parameter : 
 
-** posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
-** date_format : default : "y" value : date format of date function of PHP
-** order_by : default : "release" value : "rand", "title", "date", "modified", "release"
-* * order : default : "DESC" value : "DESC", "ASC"
-* * dynamic : default : 1 value : 0, 1
-* * show_song : default : 1 value : 0, 1
+> * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
+> * date_format : default : "y" value : date format of date function of PHP
+> * order_by : default : "release" value : "rand", "title", "date", "modified", "release"
+> * order : default : "DESC" value : "DESC", "ASC"
+> * dynamic : default : 1 value : 0, 1
+> * show_song : default : 1 value : 0, 1
 
 = Main Features =
 * Easy to add new album
@@ -71,16 +72,16 @@ Initial release.
 
 * Admin Section
 
-* * create a thumbnail of 150x150 px for de Cover
-* * Add management business link to Amazon, iTunes, Spotify ...
-* * attache file resume track
-* * import and export of discography
-* * Add placeHolder on input box
+> * create a thumbnail of 150x150 px for de Cover
+> * Add management business link to Amazon, iTunes, Spotify ...
+> * attache file resume track
+> * import and export of discography
+> * Add placeHolder on input box
 
 * shortcode
 
-* * add parameter on shortcode discography of the sort of the albums
-* * add parameter display shortcode discography for a other view
-* * add new single album shortcode
+> * add parameter on shortcode discography of the sort of the albums
+> * add parameter display shortcode discography for a other view
+> * add new single album shortcode
 
 * Add a widget with Album list
