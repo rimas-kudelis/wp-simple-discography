@@ -15,6 +15,7 @@ Simple Discography is a easy to use plugin that will allow you to manage the mus
 Simple Discography is a very easy to use plugin that will allow you to manage the music tracks for an album or albums.
 
 For each album, you will be able to provide the following data:
+
 * Titus Album
 * Album Description
 * Date of Publication
@@ -23,15 +24,16 @@ For each album, you will be able to provide the following data:
 * Song duration
 
 =Shortcode=
-*sidi-discography :
+
+1 sidi-discography :
 [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1]
-- parameter:
-1. posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,...
-2. date_format : default : "y" value : date format of date function of PHP
-3. order_by : default : "release" value : "rand", "title", "date", "modified", "release"
-4. order : default : "DESC" value : "DESC", "ASC"
-5. dynamic : default : 1 value : 0, 1
-5. show_song : default : 1 value : 0, 1
+
+* posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
+* date_format : default : "y" value : date format of date function of PHP
+* order_by : default : "release" value : "rand", "title", "date", "modified", "release"
+* order : default : "DESC" value : "DESC", "ASC"
+* dynamic : default : 1 value : 0, 1
+* show_song : default : 1 value : 0, 1
 
 = Main Features =
 * Easy to add new album
