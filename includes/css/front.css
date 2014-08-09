@@ -1,0 +1,144 @@
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.sidi ul {
+    line-height: normal;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.sidi ul li {
+    list-style-type: none;
+    margin: 0;
+}
+.sidi .sidi-album {
+    margin-bottom: 20px;
+}
+.sidi .sidi-cover {
+    float: left;
+    height: 150px;
+    width: 150px;
+}
+.sidi .sidi-cover img {
+    border: 1px solid;
+    max-height: 150px;
+    max-width: 150px;
+    margin-bottom: 0;
+}
+.sidi .sidi-album .sidi-content {
+    margin-left: 170px;
+}
+.sidi .sidi-header {
+    border-bottom: 1px solid rgb(235, 235, 235);
+    height: 27px;
+}
+.sidi .sidi-album-title {
+    clear: none;
+    float: left;
+    font-size: 17px;
+    margin: 0;
+}
+.sidi .sidi-album-title > a {
+    color: #000;
+    text-decoration: none;
+}
+.sidi .sidi-album-title > a:visited {
+    color: #000;
+}
+.sidi .sidi-release {
+    color: #808080;
+    float: right;
+    font-size: small;
+    line-height: 27px;
+}
+.sidi .sidi-excerpt {
+    min-height: 125px;
+}
+.sidi .sidi-discs {
+    background: none repeat scroll 0 0 #e4e9f0;
+    border: 1px solid #aaaeb3;
+    /*display: none;*/
+    margin: 20px 0;
+    padding: 1rem 1rem 0;
+    position: relative;
+}
+.sidi .sidi-discs .arrow {
+    border:12px solid transparent;
+    border-bottom:12px solid #aaaeb3;
+    border-top:none;
+    height:0;
+    left:50%;
+    margin-left: -6px;
+    position:absolute;
+    top:-12px;
+    width:0;
+}
+.sidi .sidi-discs .arrow:before {
+    border:10px solid transparent;
+    border-bottom:10px solid #e4e9f0;
+    border-top:none;
+    content: " ";
+    display: block;
+    height:0;
+    left:-10px;
+    position:absolute;
+    top:2px;
+    width:0;
+}
+.sidi .sidi-disk {
+    margin-bottom: 1rem;
+}
+.sidi .sidi-num-disk {
+    font-size: 1rem;
+    margin: 0;
+}
+.sidi .sidi-num-track {
+    color: #8494a1;
+    float: left;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: small;
+    text-align: right;
+    width: 25px;
+}
+.sidi .sidi-time-track {
+    color: #8494a1;
+    float: right;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: small;
+    text-align: right;
+    width: 50px;
+}
+.sidi .sidi-title-track {
+    display: block;
+    margin-left: 25px;
+    margin-right: 50px;
+    padding: 0 15px;
+}
+.sidi .sidi-title-track.sidi-notime-track {
+    margin-right: 0;
+}
+.sidi .sidi-album.discs-hidden .sidi-discs {
+    display: none;
+}
+
+.sidi .sidi-single .sidi-cover {
+    margin: 0 15px 10px 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .sidi .sidi-cover {
+        float: none !important;
+        height: auto !important;
+        margin: 0 0 2rem 0 !important;
+        text-align: center;
+        width: 100% !important;
+    }
+    .sidi .sidi-content {
+        margin: 0 !important;
+    }
+}

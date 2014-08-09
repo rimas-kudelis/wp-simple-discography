@@ -1,0 +1,174 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Discography\n"
+"POT-Creation-Date: 2014-08-08 21:19+0100\n"
+"PO-Revision-Date: 2014-08-08 21:19+0100\n"
+"Last-Translator: Sébastien Batteur <sebastien@batteur.be>\n"
+"Language-Team: Sébastien Batteur <sebastien@batteur.be>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: _e;__;_n:1,2;_x\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../SiDi_Posts.php:19
+msgid "Info Album"
+msgstr "Info Album"
+
+#: ../SiDi_Posts.php:20
+msgid "Song of Album"
+msgstr "Songs of Album"
+
+#: ../SiDi_Posts.php:34
+msgid "Release Date :"
+msgstr "Release Date :"
+
+#: ../SiDi_Posts.php:36
+msgid "Cover :"
+msgstr "Cover :"
+
+#: ../SiDi_Posts.php:36 ../SiDi_Posts.php:51
+msgid "Chose or Upload an Cover"
+msgstr "Chose or Upload an Cover"
+
+#: ../SiDi_Posts.php:36
+msgid "Delete this Cover"
+msgstr "Delete this Cover"
+
+#: ../SiDi_Posts.php:52
+msgid "Use this Cover"
+msgstr "Use this Cover"
+
+#: ../SiDi_Posts.php:57
+msgid "Close"
+msgstr "Close"
+
+#: ../SiDi_Posts.php:58
+msgid "Today"
+msgstr "Today"
+
+#: ../SiDi_Posts.php:81 ../SiDi_Shortcodes.php:128 ../SiDi_Shortcodes.php:178
+msgid "Disk n : "
+msgstr "Disk n° : "
+
+#: ../SiDi_Posts.php:81
+msgid "Add New Disk"
+msgstr "Add New Disk"
+
+#: ../SiDi_Posts.php:81
+msgid "Delete this Disk"
+msgstr "Delete this Disk"
+
+#: ../SiDi_Posts.php:81
+msgid "Add New Track"
+msgstr "Add New Track"
+
+#: ../SiDi_Posts.php:81
+msgid "Delete this Track"
+msgstr "Delete this Track"
+
+#: ../classes/SiDi_I18N_DateTime.php:181
+msgid "st"
+msgstr "st"
+
+#: ../classes/SiDi_I18N_DateTime.php:182
+msgid "nd"
+msgstr "nd"
+
+#: ../classes/SiDi_I18N_DateTime.php:183
+msgid "rd"
+msgstr "rd"
+
+#: ../classes/SiDi_I18N_DateTime.php:184
+msgid "th"
+msgstr "th"
+
+#: ../simple-discography.php:74
+msgid "Read More"
+msgstr "Read More"
+
+#: ../simple-discography.php:87
+msgid "Albums"
+msgstr "Albums"
+
+#: ../simple-discography.php:88 ../simple-discography.php:90
+msgid "Album"
+msgstr "Album"
+
+#: ../simple-discography.php:89
+msgid "Discography"
+msgstr "Discography"
+
+#: ../simple-discography.php:91
+msgid "All Albums"
+msgstr "All Album"
+
+#: ../simple-discography.php:92
+msgid "Add New"
+msgstr "Add New"
+
+#: ../simple-discography.php:93
+msgid "Add New Album"
+msgstr "Add  New Album"
+
+#: ../simple-discography.php:94
+msgid "New Album"
+msgstr "New Album"
+
+#: ../simple-discography.php:95
+msgid "Edit Album"
+msgstr "Edit Album"
+
+#: ../simple-discography.php:96
+msgid "View Album"
+msgstr "View Album"
+
+#: ../simple-discography.php:97
+msgid "Search Albums"
+msgstr "Search Albums"
+
+#: ../simple-discography.php:98
+msgid "Parent Albums:"
+msgstr "Parent Albums :"
+
+#: ../simple-discography.php:99
+msgid "No Albums found."
+msgstr "No Albums found."
+
+#: ../simple-discography.php:100
+msgid "No Albums found in Trash."
+msgstr "No Albums found in Trash."
+
+#~ msgid "Discs"
+#~ msgstr "Discs"
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "New Disk"
+#~ msgstr "New Disk"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Edit Disk"
+
+#~ msgid "View Disk"
+#~ msgstr "View Disk"
+
+#~ msgid "All Discs"
+#~ msgstr "All Discs"
+
+#~ msgid "Info Disk"
+#~ msgstr "Info Disk"
+
+#~ msgid "Delete New Track"
+#~ msgstr "Delete New Track"
+
+#~ msgid "Add New Dick"
+#~ msgstr "Add New Dick"
+
+#~ msgid "Code or Upload an Cover"
+#~ msgstr "Code or Upload an Cover"
