@@ -4,7 +4,7 @@ Donate link: http://www.batteur.be
 Tags: artist, music, discography, music manage, Album, song, track, cover, photos, music photos, genesis
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,24 +23,26 @@ For each album, you will be able to provide the following data:
 * Song titles
 * Song duration
 
-=Shortcode=
+= Shortcode =
 
 1. sidi-discography :
 
-  [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1]
+  [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1 display="list"]
 
-  * parameter : 
-    * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,..
+  * parameter :
+    * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,...
     * date_format : default : "y" value : date format of date function of PHP
     * order_by : default : "release" value : "rand", "title", "date", "modified", "release"
     * order : default : "DESC" value : "DESC", "ASC"
-    * dynamic : default : 1 value : 0, 1
-    * show_song : default : 1 value : 0, 1
+    * dynamic : default : 1 value : 0, 1 : show directly the discs and Songs. the user can not discs!
+    * show_song : default : 1 value : 0, 1 : don't show the Discs and the songs
+    * Display : default : list value : list, thumbnail
 
 = Main Features =
 * Easy to add new album
 * Shortcode for view album list
 * Easy to organize tacks (Drag&Drop)
+* Integrate responsive design for web and mobile
 * Easy integration into the default WordPress themes and Genesis
 * Integrate Genesis SEO
 * Translate in French
@@ -63,6 +65,10 @@ For each album, you will be able to provide the following data:
 
 == Changelog ==
 
+= 1.1 =
+
+* Add new display for the sidi-discography shortcode
+
 = 1.0 =
 
 Initial release.
@@ -76,7 +82,5 @@ Initial release.
   * import and export of discography
   * Add placeHolder on input box
 * shortcode
-  * add parameter on shortcode discography of the sort of the albums
-  * add parameter display shortcode discography for a other view
   * add new single album shortcode
 * Add a widget with Album list

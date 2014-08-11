@@ -56,10 +56,10 @@
     font-size: small;
     line-height: 27px;
 }
-.sidi .sidi-excerpt {
+.sidi .sidi-list .sidi-excerpt {
     min-height: 125px;
 }
-.sidi .sidi-discs {
+.sidi .sidi-list .sidi-discs {
     background: none repeat scroll 0 0 #e4e9f0;
     border: 1px solid #aaaeb3;
     /*display: none;*/
@@ -67,7 +67,7 @@
     padding: 1rem 1rem 0;
     position: relative;
 }
-.sidi .sidi-discs .arrow {
+.sidi .sidi-discs .arrow, .sidi .sidi-thumbnail .sidi-thumbnail-arrow .arrow{
     border:12px solid transparent;
     border-bottom:12px solid #aaaeb3;
     border-top:none;
@@ -78,7 +78,7 @@
     top:-12px;
     width:0;
 }
-.sidi .sidi-discs .arrow:before {
+.sidi .sidi-discs .arrow:before, .sidi .sidi-thumbnail .sidi-thumbnail-arrow .arrow:before {
     border:10px solid transparent;
     border-bottom:10px solid #e4e9f0;
     border-top:none;
@@ -89,6 +89,7 @@
     position:absolute;
     top:2px;
     width:0;
+    z-index: 1;
 }
 .sidi .sidi-disk {
     margin-bottom: 1rem;
@@ -96,6 +97,7 @@
 .sidi .sidi-num-disk {
     font-size: 1rem;
     margin: 0;
+    text-align: center;
 }
 .sidi .sidi-num-track {
     color: #8494a1;
@@ -118,27 +120,86 @@
     margin-left: 25px;
     margin-right: 50px;
     padding: 0 15px;
+    text-align: left;
 }
 .sidi .sidi-title-track.sidi-notime-track {
     margin-right: 0;
 }
-.sidi .sidi-album.discs-hidden .sidi-discs {
+.sidi .sidi-list .sidi-album.discs-hidden .sidi-discs, .sidi .sidi-thumbnail .sidi-album.discs-hidden .sidi-thumbnail-arrow {
     display: none;
 }
 
 .sidi .sidi-single .sidi-cover {
     margin: 0 15px 10px 0;
 }
+.sidi .sidi-thumbnail {
+    position: relative;
+    text-align: center;
+}
+.sidi .sidi-thumbnail .sidi-album {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+    /*position: relative;*/
+}
+.sidi .sidi-thumbnail .sidi-cover-link {
+    display: inline-block;
+    height: 153px;
+    margin-bottom: 4px;
+}
+.sidi .sidi-thumbnail .sidi-album .sidi-content {
+    background: none repeat scroll 0 0 #e4e9f0;
+    border: 1px solid #aaaeb3;
+    left: 0;
+    margin-left: 0px;
+    margin-right: 20px;
+    /*padding: 1rem 1rem 0;*/
+    position: absolute;
+    width: 100%;
+}
+.sidi .sidi-thumbnail .sidi-album.discs-hidden .sidi-content {
+    display: none;
+}
+.sidi .sidi-thumbnail .sidi-album.discs-show .sidi-content {
+    display: block;
+    margin-top: 191px;
+}
+.sidi .sidi-thumbnail .sidi-album.discs-show .sidi-cover {
+    /*height: 600px;*/
+}
+.sidi .sidi-thumbnail .sidi-header,.sidi .sidi-thumbnail .sidi-excerpt,.sidi .sidi-thumbnail .sidi-discs{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.sidi .sidi-thumbnail .sidi-header{
+    margin-top: 1rem;
+}
+.sidi .sidi-thumbnail .sidi-excerpt{
+    margin-bottom: 20px;
+    text-align: left;
+}
+.sidi .sidi-thumbnail .sidi-thumbnail-title-link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sidi .sidi-thumbnail .sidi-thumbnail-arrow{
+    position: relative;
+    margin-top: 15px;
+}
 
 @media only screen and (max-width: 800px) {
     .sidi .sidi-cover {
-        float: none !important;
         height: auto !important;
-        margin: 0 0 2rem 0 !important;
         text-align: center;
         width: 100% !important;
     }
-    .sidi .sidi-content {
+    .sidi .sidi-list .sidi-content {
         margin: 0 !important;
+    }
+    .sidi .sidi-list .sidi-cover{
+        float: none !important;
+        margin: 0 0 2rem 0 !important;
+
     }
 }

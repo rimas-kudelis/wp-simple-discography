@@ -2,7 +2,7 @@
 /*
 Plugin Name: Simple Discography
 Version: 1.0
-Plugin URI: http://www.batteur.be
+Plugin URI: http://wordpress.org/plugins/simple-discography
 Description: Simple Discography is a small plugin to very easy to use  that will allow you to manage the albums of your band.
 Author: Sébastien Batteur
 Author URI: http://www.batteur.be

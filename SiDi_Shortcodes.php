@@ -23,13 +23,17 @@ function sidi_discography_function($atts=array()) {
         'order_by'      => 'release',
         'order'         => 'DESC',
         'dynamic'       => 1,
-        'show_song'     => 1
+        'show_song'     => 1,
+        'display'       => 'list'
     ), $atts, 'sidi-discography' );
 
     if ( $atts['show_song'] === 'false' ) $atts['show_song'] = false; // just to be sure...
     $show_song = (bool) $atts['show_song'];
     if ( $atts['dynamic'] === 'false' ) $atts['dynamic'] = false; // just to be sure...
     $dynamic = (bool) $atts['dynamic'];
+    if ( $atts['display'] != 'thumbnail' ) $atts['display'] = 'list';
+    if($atts['display'] == 'thumbnail' ) $dynamic=true;
+    $show_id=-1;
     if($show_song && $dynamic){
         $show_id=(empty($_GET['alb'])?-1:intval($_GET['alb'], 10));
         $current_url=esc_url_raw(( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
@@ -91,22 +95,36 @@ function sidi_discography_function($atts=array()) {
     if(isset($query['orderby']))
         $query['orderby']=implode(' ', $query['orderby']);
 
-
-
-
-
     $query = new WP_Query($query);
-    $return_string='<div class="sidi"><ul>';
+    $return_string='<div class="sidi"><ul class="sidi-'.$atts['display'].'">';
     while ($query->have_posts()) {
         $query->the_post();
         $return_string .='<li id="sidi-'.$query->post->ID.'" class="sidi-album '.($show_id==$query->post->ID || !$dynamic?'discs-show':'discs-hidden').' clearfix">';
 
         $cover=get_post_meta( $query->post->ID, COVER, true );
         $discs=($show_song?get_post_meta( $query->post->ID, DISCS, true ):null);
-        if($dynamic&&!empty($discs))
-            $return_string .='<div class="sidi-cover"><a class="sidi-cover-link" href="'.$current_url.$query->post->ID.'"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></a></div>';
-        else
-            $return_string .='<div class="sidi-cover"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></div>';
+        if($atts['display']=='list'){
+            if($dynamic&&!empty($discs))
+                $return_string .='<div class="sidi-cover"><a class="sidi-cover-link" href="'.$current_url.$query->post->ID.'"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></a></div>';
+            else
+                $return_string .='<div class="sidi-cover"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></div>';
+        }else{
+
+            if($atts['display']=='thumbnail'){
+                if($show_song)
+                    $return_string .='<div class="sidi-cover"><a class="sidi-cover-link" href="'.$current_url.$query->post->ID.'"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></a>';
+                else
+                    $return_string .='<div class="sidi-cover"><a href="'.get_permalink().'"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></a>';
+                $return_string .='<div class="sidi-thumbnail-title"><div class="sidi-thumbnail-title-link"><a href="'.get_permalink().'">'.get_the_title().'</a></div>';
+                $return_string .='<div class="sidi-thumbnail-arrow">';
+                $return_string .='  <span class="arrow"></span>';
+                $return_string .='</div>';
+                $return_string .='</div>';
+                $return_string .='</div>';
+            }
+        }
+
+
         $return_string .='<div class="sidi-content">';
         $return_string .='<div class="sidi-header clearfix">';
         $return_string .= '<H2 class="sidi-album-title"><a href="'.get_permalink().'">'.get_the_title().'</a></H2>';
@@ -121,7 +139,8 @@ function sidi_discography_function($atts=array()) {
         if(!empty($discs) && $show_song){
             $multi_discs=(count($discs)>1)?true:false;
             $return_string .='<div class="sidi-discs">';
-            $return_string .='<span class="arrow"></span>';
+            if($atts['display']!='thumbnail')
+                $return_string .='<span class="arrow"></span>';
             foreach($discs as $disk => $tracks){
                 $return_string .='<div class="sidi-disk">';
                 if($multi_discs)
@@ -152,7 +171,7 @@ function sidi_the_content_filter( $content ) {
         if (is_singular( PORT_TYPE )) {
             wp_enqueue_style( 'front-style', plugins_url( 'includes/css/front.css' , __FILE__ ), true);
             $id= get_the_ID();
-            $return_string ='<div class="sidi"><div id="sidi-'.$id.'" class="sidi-single">';
+            $return_string ='<div class="sidi"><div id="sidi-'.$id.'" class="sidi-single sidi-list">';
 
             $cover=get_post_meta( $id, COVER, true );
             $return_string .='<div class="sidi-content clearfix">';
