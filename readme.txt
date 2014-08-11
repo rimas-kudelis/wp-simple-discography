@@ -55,13 +55,14 @@ For each album, you will be able to provide the following data:
 
 == Screenshots ==
 
-1. Display Shortcode sidi-discography
-2. Display Shortcode sidi-discography when click on the cover art
-3. simple Album
-4. Discography Admin
-5. Add/Edite new album with the release date and de cover art
-6. Add/Edite new album with the song
-7. Used ShortCode sidi-discography
+1. Display Shortcode sidi-discography witch thumbnail parameter
+2. Display Shortcode sidi-discography witch list parameter
+3. Display Shortcode sidi-discography when click on the cover art
+4. simple Album
+5. Discography Admin
+6. Add/Edite new album with the release date and de cover art
+7. Add/Edite new album with the song
+8. Used ShortCode sidi-discography
 
 == Changelog ==
 
