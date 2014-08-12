@@ -144,7 +144,7 @@ function sidi_save_disk_meta($post_id, $post) {
     }
     foreach($discs_data as $key=>$value){
         if(!empty($value[0]) && !empty($value[0]['disk']) ){
-            $tracks=[];
+            $tracks=array();
             foreach($value as $key_track => $track){
                 if(!empty($track['track']) && trim(implode("",$track))!=""){
                     $tracks[$track['track']]=array(

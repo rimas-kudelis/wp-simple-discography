@@ -23,8 +23,8 @@ class SiDi_I18N_DateTime {
         $no_accent_date = str_split(preg_replace('#&[^;]+;#', '', $no_accent_date));
         $datetime=SiDi_I18N_DateTime::mbStringToArray($datetime);
         $len_date=count($datetime);
-        $month=[1=>"January",2=>"February",3=>"March",4=>"April",5=>"May",6=>"June",7=>"July",8=>"August",9=>"September",10=>"October",11=>"November",12=>"December"];
-        $weekday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        $month=array(1=>"January",2=>"February",3=>"March",4=>"April",5=>"May",6=>"June",7=>"July",8=>"August",9=>"September",10=>"October",11=>"November",12=>"December");
+        $weekday=array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 
 //        var_dump($no_accent_date, $datetime);
         for($i = 0; $i < $len_date; $i++)
