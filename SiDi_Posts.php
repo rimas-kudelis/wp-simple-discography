@@ -24,8 +24,8 @@ function add_disk_metaboxes() {
 function sidi_disk_info() {
     global $post;
 
-    wp_enqueue_style( 'jquery-ui-style', plugins_url( 'css/jquery-ui-redmond.min.css' , __FILE__ ), true);
-    wp_enqueue_style( 'admin-style', plugins_url( 'css/admin.css' , __FILE__ ), true);
+    wp_enqueue_style( 'jquery-ui-style', plugins_url( 'includes/css/jquery-ui-redmond.min.css' , __FILE__ ), true);
+    wp_enqueue_style( 'admin-style', plugins_url( 'includes/css/admin.css' , __FILE__ ), true);
 
     wp_nonce_field( plugin_basename( __FILE__ ), 'discometa_noncename' );
     $genForm = new SiDi_Generat_Form($post->ID);
@@ -44,8 +44,8 @@ function sidi_enqueue() {
     global $typenow, $post, $wp_locale;
     if( $typenow == PORT_TYPE ) {
         wp_enqueue_script( 'jquery-ui-datepicker' );
-        wp_enqueue_script( 'jquery-ui-timepicker', plugins_url( 'js/jquery-ui-timepicker-addon.js', dirname(__FILE__) ), array( 'jquery' ,'jquery-ui-datepicker', 'jquery-ui-spinner') );
-        wp_register_script( 'admin_script',  plugins_url( 'js/sidi_admin.js', dirname(__FILE__) ), array( 'jquery' ,'media-upload') );
+        wp_enqueue_script( 'jquery-ui-timepicker', plugins_url( 'includes/js/jquery-ui-timepicker-addon.js', __FILE__ ), array( 'jquery' ,'jquery-ui-datepicker', 'jquery-ui-spinner') );
+        wp_register_script( 'admin_script',  plugins_url( 'includes/js/sidi_admin.js', __FILE__ ), array( 'jquery' ,'media-upload') );
         wp_localize_script( 'admin_script', 'meta_image',
             array(
                 'title' => __('Chose or Upload an Cover','sidi'),
@@ -104,9 +104,13 @@ function sidi_save_disk_meta($post_id, $post) {
                     $sidi_post[$key]=json_decode(stripslashes($sidi_post[$key]),true);
                 }elseif($key==RELEASE){
 //                    $sidi_post[$key]=translate_to_english($sidi_post[$key]);
-                    $date_form=SiDi_I18N_DateTime::createFromFormat (get_option( 'date_format' ), $sidi_post[$key]);
-                    $date_form->setTime(0, 0, 0);
-                    $sidi_post[$key]=$date_form->getTimestamp();
+                    if(!empty($sidi_post[$key])){
+                        $date_form=SiDi_I18N_DateTime::createFromFormat (get_option( 'date_format' ), $sidi_post[$key]);
+                        $date_form->setTime(0, 0, 0);
+                        $sidi_post[$key]=$date_form->getTimestamp();
+
+                    }
+
 //                var_dump( $sidi_post[$key]);
                 }
                 if(empty($sidi_post[$key])){
