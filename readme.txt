@@ -4,7 +4,7 @@ Donate link: http://www.batteur.be
 Tags: artist, music, discography, music manage, Album, song, track, cover, photos, music photos, genesis
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,11 @@ For each album, you will be able to provide the following data:
 8. Used ShortCode sidi-discography
 
 == Changelog ==
+
+= 1.1.2 =
+
+* Correction for loading of the javascript and style of admin section
+* Correction when release date for a post is empty
 
 = 1.1.1 =
 

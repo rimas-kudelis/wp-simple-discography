@@ -232,7 +232,7 @@ class SiDi_I18N_DateTime {
                 }
             }
         }
-        if(!empty($post_format))
+        if(isset($post_format))
             $date .= date($post_format,$timestamp);
         return $date;
     }

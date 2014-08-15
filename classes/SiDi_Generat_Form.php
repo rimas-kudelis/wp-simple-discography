@@ -8,7 +8,7 @@
 Class SiDi_Generat_Form {
     private $id;
 
-    public function __construct($id){
+    public function SiDi_Generat_Form($id){
         $this->id=$id;
     }
 
@@ -112,7 +112,9 @@ Class SiDi_Generat_Form {
         $html="";
         if (!empty($title))
             $html.=$this->getLabel($title);
-        $date=SiDi_I18N_DateTime::date(get_option( 'date_format' ), $this->getValue($key));
+        $date=$this->getValue($key);
+        if (!empty($date))
+            $date=SiDi_I18N_DateTime::date(get_option( 'date_format' ), $date);
         if(!empty($key)){
             $html.="<p>\n\t";
             $html.='<input type="text" value="'.esc_attr($date).'" id="'.$key.'" name="'.$key.'" class="datepicker" '.$attr.'>';
