@@ -15,7 +15,7 @@ class SiDi_Widget_Form extends WP_Widget {
 
     public function SiDi_Widget_Form($id_base, $name, $widget_options = array(), $control_options = array() ){
         $this->Gen_Form = new SiDi_General_From();
-        Parent::WP_Widget($id_base, $name, $widget_options, $control_options );
+        parent::WP_Widget($id_base, $name, $widget_options, $control_options );
     }
     protected  function init_class($add_class,$class=""){
         return trim($class.' '.$add_class);
