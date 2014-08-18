@@ -62,6 +62,8 @@ For each album, you will be able to provide the following data:
 
 == Screenshots ==
 
+9. Diplay Widget
+10. Add/Edite a new widget
 1. Display Shortcode sidi-discography witch thumbnail parameter
 2. Display Shortcode sidi-discography witch list parameter
 3. Display Shortcode sidi-discography when click on the cover art
