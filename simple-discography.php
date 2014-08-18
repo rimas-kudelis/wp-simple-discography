@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Simple Discography
-Version: 1.1.2
+Version: 1.2
 Plugin URI: http://wordpress.org/plugins/simple-discography
 Description: Simple Discography is a small plugin to very easy to use  that will allow you to manage the albums of your band.
 Author: Sébastien Batteur
@@ -126,6 +126,7 @@ function register_dick() {
 
     register_post_type( PORT_TYPE, $args );
 }
+require_once('SiDi_Discography_Widget.php');
 
 if ( ! is_admin() ) {
     require_once('SiDi_Shortcodes.php');

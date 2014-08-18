@@ -4,7 +4,7 @@ Donate link: http://www.batteur.be
 Tags: artist, music, discography, music manage, Album, song, track, cover, photos, music photos, genesis
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.1.2
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ For each album, you will be able to provide the following data:
 
 1. sidi-discography :
 
-  [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1 display="list"]
+  [sidi-discography posts_per_page=-1 date_format"'y" order_by="release" order="DESC" dynamic=1 show_song=1 show_title=1 display="list" cover_width=150 cover_height=150 id=""]
 
   * parameter :
     * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,...
@@ -37,10 +37,17 @@ For each album, you will be able to provide the following data:
     * dynamic : default : 1 value : 0, 1 : show directly the discs and Songs. the user can not discs!
     * show_song : default : 1 value : 0, 1 : don't show the Discs and the songs
     * Display : default : list value : list, thumbnail
+    * show_title : default : 1 value : 0, 1
+    * cover_width : default : 150 value : 1, 2, 3, 4,...
+    * cover_height : default : 150 value : 1, 2, 3, 4,...
+    * id : default : "" value : string : if you use more than one sidi-discography on a page
+
 
 = Main Features =
 * Easy to add new album
 * Shortcode for view album list
+* Widget with Album list
+* Scalable cover on widget and shortcode
 * Easy to organize tacks (Drag&Drop)
 * Integrate responsive design for web and mobile
 * Easy integration into the default WordPress themes and Genesis
@@ -65,6 +72,12 @@ For each album, you will be able to provide the following data:
 8. Used ShortCode sidi-discography
 
 == Changelog ==
+
+= 1.2 =
+
+* Add Widget with Album list
+* Add setting "show_title", "cover_width", "cover_height" and "id" in sidi-discography shorcode
+* Add sizing cover on widget and shortcode
 
 = 1.1.2 =
 
@@ -93,4 +106,4 @@ Initial release.
   * Add placeHolder on input box
 * shortcode
   * add new single album shortcode
-* Add a widget with Album list
+  * add "Simple list" for display type

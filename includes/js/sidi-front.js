@@ -48,17 +48,28 @@ jQuery(document).ready(function ($) {
             var classShow='discs-show',
                 classHidden='discs-hidden';
             var disk=$(clicked).closest('.sidi-album'),
-                url=$(clicked).attr('href');
+                url=$(clicked).attr('href'),
+                pg=$(clicked).closest('.sidi').attr('id');
+            if(typeof pg ==='undefined' || pg.length==0)
+                pg=''
+            else{
+                pg=pg.replace(/^sidi\-/i,''),
+                pg+=pg.length?'_':'';
+            }
+            var pathname = window.location.pathname;
+            var re = new RegExp("(\\?|&)"+pg.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")+"alb=[0-9]+", "gi");
+            var s=location.search.replace(re, "");
+            if(s[0]=='&')
+                s = '?'+s.substring(1);
+            url=location.origin+location.pathname+location.hash
+
             if(disk.hasClass(classShow)){
                 $(div,disk).slideUp(400)
                 disk.removeClass(classShow).addClass(classHidden);
                 if(thumbnail.length)
                     disk.height('')
-                var pathname = window.location.pathname;
-                var s=location.search.replace(/(\?|&)alb=[0-9]+/ig, "");
-                if(s[0]=='&')
-                    s = '?'+s.substring(1);
-                pushState(location.origin+location.pathname+location.hash+s);
+
+                pushState(url+s);
             }else{
                 disk.parent().find('.'+classShow).each(function(){
                     var self=$(this);
@@ -74,7 +85,12 @@ jQuery(document).ready(function ($) {
                         $.scrollTo($(scrollTo, disk),400);
                 })
                 disk.removeClass(classHidden).addClass(classShow);
-                pushState(url);
+                var id = $(clicked).closest('.sidi-album').attr('id').replace(/^sidi-/i,'');
+
+                s=s+'&'+pg+'alb'+'='+id;
+                if(s[0]=='&')
+                    s = '?'+s.substring(1);
+                pushState(url+s);
             }
 
         }

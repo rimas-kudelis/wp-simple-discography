@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Discography\n"
-"POT-Creation-Date: 2014-08-08 21:19+0100\n"
-"PO-Revision-Date: 2014-08-08 21:19+0100\n"
+"POT-Creation-Date: 2014-08-18 09:47+0100\n"
+"PO-Revision-Date: 2014-08-18 09:53+0100\n"
 "Last-Translator: Sébastien Batteur <sebastien@batteur.be>\n"
 "Language-Team: Sébastien Batteur <sebastien@batteur.be>\n"
 "Language: fr_FR\n"
@@ -13,133 +13,227 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: _e;__;_n:1,2;_x\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-0: ../..\n"
 
-#: ../SiDi_Posts.php:19
-msgid "Info Album"
-msgstr "Info Album"
+#: ../../SiDi_Discography_Widget.php:44
+msgid "Type Display : "
+msgstr "Type d'Affichage : "
 
-#: ../SiDi_Posts.php:20
-msgid "Song of Album"
-msgstr "Chansons de l'Album"
+#: ../../SiDi_Discography_Widget.php:48
+msgid "Vertical List"
+msgstr "Liste Vertical"
 
-#: ../SiDi_Posts.php:34
-msgid "Release Date :"
-msgstr "Date de publication : "
+#: ../../SiDi_Discography_Widget.php:49
+msgid "Thumbnail"
+msgstr "Miniature"
 
-#: ../SiDi_Posts.php:36
-msgid "Cover :"
-msgstr "Couverture : "
+#: ../../SiDi_Discography_Widget.php:53
+msgid "Number of Album to Show: "
+msgstr "Nombre d'Album à Afficher : "
 
-#: ../SiDi_Posts.php:36 ../SiDi_Posts.php:51
-msgid "Chose or Upload an Cover"
-msgstr "Choisissez ou Ajouter une couverture"
+#: ../../SiDi_Discography_Widget.php:63
+msgid "Format Date Display: "
+msgstr "Format d'Affichage de la Date : "
 
-#: ../SiDi_Posts.php:36
-msgid "Delete this Cover"
-msgstr "Supprimer cette couverture"
+#: ../../SiDi_Discography_Widget.php:67
+msgid "Order By: "
+msgstr "Trier par : "
 
-#: ../SiDi_Posts.php:52
-msgid "Use this Cover"
-msgstr "Utilisez cette couverture"
+#: ../../SiDi_Discography_Widget.php:71
+msgid "Date of Create Album"
+msgstr "Date de Créer un album"
 
-#: ../SiDi_Posts.php:57
-msgid "Close"
-msgstr "Fermer"
+#: ../../SiDi_Discography_Widget.php:72
+msgid "Date of Modified Album"
+msgstr "Date de mise à jour de l'Album"
 
-#: ../SiDi_Posts.php:58
-msgid "Today"
-msgstr "Aujourd'hui"
+#: ../../SiDi_Discography_Widget.php:73
+msgid "Random"
+msgstr "Aléatoire"
 
-#: ../SiDi_Posts.php:81 ../SiDi_Shortcodes.php:128 ../SiDi_Shortcodes.php:178
-msgid "Disk n : "
-msgstr "Disque N° :"
+#: ../../SiDi_Discography_Widget.php:74
+msgid "Date of Release"
+msgstr "Date de Sortie"
 
-#: ../SiDi_Posts.php:81
-msgid "Add New Disk"
-msgstr "Ajouter un Disque"
+#: ../../SiDi_Discography_Widget.php:75
+msgid "Title"
+msgstr "Titre"
 
-#: ../SiDi_Posts.php:81
-msgid "Delete this Disk"
-msgstr "Supprimer ce Disque"
+#: ../../SiDi_Discography_Widget.php:79
+msgid "Cover Height: "
+msgstr "Hauteur de la Couverture : "
 
-#: ../SiDi_Posts.php:81
-msgid "Add New Track"
-msgstr "Ajouter une piste"
+#: ../../SiDi_Discography_Widget.php:90
+msgid "Cover Widht: "
+msgstr "Largeur de la Couverture : "
 
-#: ../SiDi_Posts.php:81
-msgid "Delete this Track"
-msgstr "Supprimer ce Disque"
+#: ../../SiDi_Discography_Widget.php:101
+msgid "Sort Order : "
+msgstr "Ordre de tri : "
 
-#: ../classes/SiDi_I18N_DateTime.php:181
-msgid "st"
-msgstr "er"
+#: ../../SiDi_Discography_Widget.php:105
+msgid "Ascending (1, 2, 3)"
+msgstr "Croissant (1, 2, 3)"
 
-#: ../classes/SiDi_I18N_DateTime.php:182
-msgid "nd"
-msgstr "ème"
+#: ../../SiDi_Discography_Widget.php:106
+msgid "Descending (3, 2, 1)"
+msgstr "Décroissant (3, 2, 1)"
 
-#: ../classes/SiDi_I18N_DateTime.php:183
-msgid "rd"
-msgstr "ème"
+#: ../../SiDi_Discography_Widget.php:110
+msgid "Dynamic Display : "
+msgstr "Affichage dynamiques : "
 
-#: ../classes/SiDi_I18N_DateTime.php:184
-msgid "th"
-msgstr "ème"
+#: ../../SiDi_Discography_Widget.php:116
+msgid "Show the Discs : "
+msgstr "Afficher les Disques : "
 
-#: ../simple-discography.php:74
-msgid "Read More"
-msgstr "Lire la suite..."
+#: ../../SiDi_Discography_Widget.php:122
+msgid "Show the Titles : "
+msgstr "Afficher les Titres : "
 
-#: ../simple-discography.php:87
-msgid "Albums"
-msgstr "Albums"
+#: ../../SiDi_Discography_Widget.php:130
+msgid "Displays Albums with their thumbnails"
+msgstr "Afficher les Albums avec leurs vignettes"
 
-#: ../simple-discography.php:88 ../simple-discography.php:90
-msgid "Album"
-msgstr "Album"
-
-#: ../simple-discography.php:89
+#: ../../SiDi_Discography_Widget.php:134 ../../simple-discography.php:89
 msgid "Discography"
 msgstr "Discographie"
 
-#: ../simple-discography.php:91
+#: ../../SiDi_Discography_Widget.php:180
+msgid "New title"
+msgstr "Nouveau Titre"
+
+#: ../../SiDi_Discography_Widget.php:184
+msgid "Title:"
+msgstr "Titre : "
+
+#: ../../SiDi_Posts.php:19
+msgid "Info Album"
+msgstr "Info Album"
+
+#: ../../SiDi_Posts.php:20
+msgid "Song of Album"
+msgstr "Chansons de l'Album"
+
+#: ../../SiDi_Posts.php:34
+msgid "Release Date :"
+msgstr "Date de publication : "
+
+#: ../../SiDi_Posts.php:36
+msgid "Cover :"
+msgstr "Couverture : "
+
+#: ../../SiDi_Posts.php:36 ../../SiDi_Posts.php:51
+msgid "Chose or Upload an Cover"
+msgstr "Choisissez ou Ajouter une couverture"
+
+#: ../../SiDi_Posts.php:36
+msgid "Delete this Cover"
+msgstr "Supprimer cette couverture"
+
+#: ../../SiDi_Posts.php:52
+msgid "Use this Cover"
+msgstr "Utilisez cette couverture"
+
+#: ../../SiDi_Posts.php:57
+msgid "Close"
+msgstr "Fermer"
+
+#: ../../SiDi_Posts.php:58
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: ../../SiDi_Posts.php:81 ../../SiDi_Shortcodes.php:193
+#: ../../SiDi_Shortcodes.php:243
+msgid "Disk n : "
+msgstr "Disque N° :"
+
+#: ../../SiDi_Posts.php:81
+msgid "Add New Disk"
+msgstr "Ajouter un Disque"
+
+#: ../../SiDi_Posts.php:81
+msgid "Delete this Disk"
+msgstr "Supprimer ce Disque"
+
+#: ../../SiDi_Posts.php:81
+msgid "Add New Track"
+msgstr "Ajouter une piste"
+
+#: ../../SiDi_Posts.php:81
+msgid "Delete this Track"
+msgstr "Supprimer ce Disque"
+
+#: ../../SiDi_Shortcodes.php:146 ../../SiDi_Shortcodes.php:151
+#: ../../SiDi_Shortcodes.php:157 ../../SiDi_Shortcodes.php:159
+msgid "Cover : "
+msgstr "Couverture : "
+
+#: ../../classes/SiDi_I18N_DateTime.php:181
+msgid "st"
+msgstr "er"
+
+#: ../../classes/SiDi_I18N_DateTime.php:182
+msgid "nd"
+msgstr "ème"
+
+#: ../../classes/SiDi_I18N_DateTime.php:183
+msgid "rd"
+msgstr "ème"
+
+#: ../../classes/SiDi_I18N_DateTime.php:184
+msgid "th"
+msgstr "ème"
+
+#: ../../simple-discography.php:74
+msgid "Read More"
+msgstr "Lire la suite..."
+
+#: ../../simple-discography.php:87
+msgid "Albums"
+msgstr "Albums"
+
+#: ../../simple-discography.php:88 ../../simple-discography.php:90
+msgid "Album"
+msgstr "Album"
+
+#: ../../simple-discography.php:91
 msgid "All Albums"
 msgstr "Tous les Albums"
 
-#: ../simple-discography.php:92
+#: ../../simple-discography.php:92
 msgid "Add New"
 msgstr "Ajouter"
 
-#: ../simple-discography.php:93
+#: ../../simple-discography.php:93
 msgid "Add New Album"
 msgstr "Ajouter Nouveau Album"
 
-#: ../simple-discography.php:94
+#: ../../simple-discography.php:94
 msgid "New Album"
 msgstr "Nouveau Album"
 
-#: ../simple-discography.php:95
+#: ../../simple-discography.php:95
 msgid "Edit Album"
 msgstr "Modifier l'Album"
 
-#: ../simple-discography.php:96
+#: ../../simple-discography.php:96
 msgid "View Album"
 msgstr "Afficher l'Album"
 
-#: ../simple-discography.php:97
+#: ../../simple-discography.php:97
 msgid "Search Albums"
 msgstr "Chercher dans les Albums"
 
-#: ../simple-discography.php:98
+#: ../../simple-discography.php:98
 msgid "Parent Albums:"
 msgstr "Albums parente&nbsp;:"
 
-#: ../simple-discography.php:99
+#: ../../simple-discography.php:99
 msgid "No Albums found."
 msgstr "Aucun Albums trouvé."
 
-#: ../simple-discography.php:100
+#: ../../simple-discography.php:100
 msgid "No Albums found in Trash."
 msgstr "Aucun Albums trouvée dans la corbeille."
 

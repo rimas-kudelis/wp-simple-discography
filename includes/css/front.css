@@ -6,17 +6,17 @@
     clear: both;
     height: 0;
 }
-.sidi ul {
+.sidi ul, .widget .sidi ul {
     line-height: normal;
     list-style: none outside none;
     margin: 0;
     padding: 0;
 }
-.sidi ul li {
+.sidi ul li.list-style-none,.widget-area .widget .sidi ul li.list-style-none {
     list-style-type: none;
     margin: 0;
 }
-.sidi .sidi-album {
+.sidi ul li.sidi-album, .widget-area .widget .sidi ul li.sidi-album {
     margin-bottom: 20px;
 }
 .sidi .sidi-cover {
@@ -30,7 +30,7 @@
     max-width: 150px;
     margin-bottom: 0;
 }
-.sidi .sidi-album .sidi-content {
+.sidi .sidi-list .sidi-album .sidi-content {
     margin-left: 170px;
 }
 .sidi .sidi-header {
@@ -41,6 +41,7 @@
     clear: none;
     float: left;
     font-size: 17px;
+    line-height: 1.6;
     margin: 0;
 }
 .sidi .sidi-album-title > a {
@@ -136,7 +137,7 @@
     position: relative;
     text-align: center;
 }
-.sidi .sidi-thumbnail .sidi-album {
+.sidi .sidi-thumbnail .sidi-album, .widget-area .widget .sidi .sidi-thumbnail .sidi-album {
     display: inline-block;
     margin: 20px;
     vertical-align: top;
@@ -192,7 +193,6 @@
     .sidi .sidi-cover {
         height: auto !important;
         text-align: center;
-        width: 100% !important;
     }
     .sidi .sidi-list .sidi-content {
         margin: 0 !important;
@@ -200,6 +200,7 @@
     .sidi .sidi-list .sidi-cover{
         float: none !important;
         margin: 0 0 2rem 0 !important;
+        width: 100% !important;
 
     }
 }
