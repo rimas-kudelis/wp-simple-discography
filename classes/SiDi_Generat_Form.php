@@ -135,7 +135,8 @@ Class SiDi_Generat_Form {
             $hidden=true;
             if($value){
                 $hidden=false;
-                $html.="\t\t". '<img src="'.$value['url'].'" alt="'.$value['image_alt'].'" />'."\n";
+//                $html.="\t\t". '<img src="'.$value['url'].'" alt="'.$value['image_alt'].'" />'."\n";
+                $html.="\t\t".  wp_get_attachment_image($value['id'],array(150,150),false,array('alt'=>$value['image_alt']))."\n";
             }
             $html.="\t\t<span".(!$hidden?' style="display: none;"':'').'>'.esc_html($button)."</span>\n";
             $html.="\t</a><br>\n";

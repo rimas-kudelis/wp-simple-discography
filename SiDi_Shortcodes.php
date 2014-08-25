@@ -45,7 +45,7 @@ function sidi_discography_function($atts=array()) {
     $cover_width=intval($atts['cover_width'], 10);
     $style_cover_img=$style_cover_link=$style_cover=$style_content='';
     if($cover_height!==150 || $cover_width!==150){
-        $style_cover_img=$style_cover=' style="';
+        $style_cover=' style="';
         if($cover_height!==150){
             $style_cover.='height: '.$cover_height.'px; ';
             $style_cover_img.='max-height: '.$cover_height.'px; ';
@@ -135,6 +135,7 @@ function sidi_discography_function($atts=array()) {
     $query = new WP_Query($query);
     $return_string='<div'.$sidi_id.' class="sidi"><ul class="sidi-'.$atts['display'].'">';
 //    var_dump($dynamic&&!empty($discs), $dynamic, $show_song);
+    $cover_size=array($cover_width,$cover_height);
     while ($query->have_posts()) {
         $query->the_post();
         $return_string .='<li id="sidi-'.$query->post->ID.'" class="sidi-album list-style-none'.($show_id==$query->post->ID || !$dynamic?' discs-show':' discs-hidden').' clearfix">';
@@ -143,20 +144,20 @@ function sidi_discography_function($atts=array()) {
         $discs=($show_song?get_post_meta( $query->post->ID, DISCS, true ):null);
         if($atts['display']=='list'){
             if($dynamic&&!empty($discs))
-                $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" class="sidi-cover-link" href="'.$current_url.$query->post->ID.'" '.$style_cover_link.'><img alt="'.__('Cover : ','sidi').esc_attr(get_the_title()).'" src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" '.$style_cover_img.'></a></div>';
+                $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" class="sidi-cover-link" href="'.$current_url.$query->post->ID.'" '.$style_cover_link.'>'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('style'=>$style_cover_img, 'alt'=>__('Cover : ','sidi').get_the_title())).'</a></div>';
             else{
                 if($show_song)
-                    $return_string .='<div class="sidi-cover"'.$style_cover.'><img alt="'.esc_attr(get_the_title()).'" src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" '.$style_cover_img.'></div>';
+                    $return_string .='<div class="sidi-cover"'.$style_cover.'>'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('style'=>$style_cover_img, 'alt'=>__('Cover : ','sidi').get_the_title())).'</div>';
                 else
-                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" href="'.get_permalink().'" '.$style_cover_link.'><img alt="'.__('Cover : ','sidi').esc_attr(get_the_title()).'" src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" '.$style_cover_img.'></a></div>';
+                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" href="'.get_permalink().'" '.$style_cover_link.'>'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('style'=>$style_cover_img, 'alt'=>__('Cover : ','sidi').get_the_title())).'</a></div>';
             }
         }else{
 
             if($atts['display']=='thumbnail'){
                 if($show_song)
-                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" class="sidi-cover-link" href="'.$current_url.$query->post->ID.'" '.$style_cover_link.'><img alt="'.__('Cover : ','sidi').esc_attr(get_the_title()).'" src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" '.$style_cover_img.'></a>';
+                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" class="sidi-cover-link" href="'.$current_url.$query->post->ID.'" '.$style_cover_link.'>'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('style'=>$style_cover_img, 'alt'=>__('Cover : ','sidi').get_the_title())).'</a>';
                 else
-                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" href="'.get_permalink().'" '.$style_cover_link.'><img alt="'.__('Cover : ','sidi').esc_attr(get_the_title()).'" src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" '.$style_cover_img.'></a>';
+                    $return_string .='<div class="sidi-cover"'.$style_cover.'><a title="'.esc_attr(get_the_title()).'" href="'.get_permalink().'" '.$style_cover_link.'>'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('style'=>$style_cover_img, 'alt'=>__('Cover : ','sidi').get_the_title())).'</a>';
 
                     $return_string .='<div class="sidi-thumbnail-title">';
                 if($show_title)
@@ -208,6 +209,21 @@ function sidi_discography_function($atts=array()) {
     wp_reset_postdata();
     return $return_string;
 
+}
+function sidi_get_cover_image($attachement_id, $size=array(150,150), $attr=array()){
+    $cover=$attachement_id!=0?wp_get_attachment_image_src($attachement_id, $size):false;
+    if($cover==false){
+        $cover=array(
+            plugins_url( 'includes/images/no-cover.png' , __FILE__ ),
+            $size[0],
+            $size[1]
+        );
+    }
+    foreach($attr as $key=>&$val)
+        $val=$key.'="'.esc_attr($val).'"';
+    unset($val);
+    $attr= ' '.implode(' ', $attr);
+    return '<img width="'.$cover[1].'" height="'.$cover[2].'" src="'.$cover[0].'" class="attachment-'.$cover[1].'x'.$cover[2].'"'.$attr.'/>';
 }
 add_filter( 'the_content', 'sidi_the_content_filter', 20 );
 function sidi_the_content_filter( $content ) {

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Simple Discography
-Version: 1.2.1
+Version: 1.2.2
 Plugin URI: http://wordpress.org/plugins/simple-discography
 Description: Simple Discography is a small plugin to very easy to use  that will allow you to manage the albums of your band.
 Author: Sébastien Batteur
@@ -66,9 +66,9 @@ if($current_theme->get('name')=='Genesis' || $current_theme->get('Template')=='g
 
 
 
-add_filter( 'excerpt_more', 'new_excerpt_more',100 );
+add_filter( 'excerpt_more', 'sidi_new_excerpt_more',100 );
 
-function new_excerpt_more( $more ) {
+function sidi_new_excerpt_more( $more ) {
     global $post;
     if($post->post_type== PORT_TYPE)
         return ' <a title="'.esc_attr(__('Read More', 'sisi')).'" href="'. get_permalink( get_the_ID() ) . '">[...]</a>';
@@ -76,13 +76,13 @@ function new_excerpt_more( $more ) {
         $more;
 }
 
-add_action( 'init', 'register_dick' );
+add_action( 'init', 'sidi_register_dick' );
 /**
  * Register a book post type.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_post_type
  */
-function register_dick() {
+function sidi_register_dick() {
     $labels = array(
         'name'               => __( 'Albums', 'sidi' ),
         'singular_name'      => __( 'Album', 'sidi' ),

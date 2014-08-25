@@ -2,6 +2,7 @@
 html>body .sortable li { height: 1.9em; line-height: 1.4em; }
 .ui-state-highlight { height: 1.9em; line-height: 1.4em; }
 #sidi-cover-button > img {
+    border: 1px solid #dddddd;
     max-width: 100%;
 }
 /* css for timepicker */

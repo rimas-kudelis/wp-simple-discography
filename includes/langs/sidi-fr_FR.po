@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Discography\n"
-"POT-Creation-Date: 2014-08-18 09:47+0100\n"
-"PO-Revision-Date: 2014-08-18 09:53+0100\n"
+"POT-Creation-Date: 2014-08-25 20:46+0100\n"
+"PO-Revision-Date: 2014-08-25 20:46+0100\n"
 "Last-Translator: Sébastien Batteur <sebastien@batteur.be>\n"
 "Language-Team: Sébastien Batteur <sebastien@batteur.be>\n"
 "Language: fr_FR\n"
@@ -143,8 +143,8 @@ msgstr "Fermer"
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: ../../SiDi_Posts.php:81 ../../SiDi_Shortcodes.php:193
-#: ../../SiDi_Shortcodes.php:243
+#: ../../SiDi_Posts.php:81 ../../SiDi_Shortcodes.php:194
+#: ../../SiDi_Shortcodes.php:259
 msgid "Disk n : "
 msgstr "Disque N° :"
 
@@ -164,8 +164,9 @@ msgstr "Ajouter une piste"
 msgid "Delete this Track"
 msgstr "Supprimer ce Disque"
 
-#: ../../SiDi_Shortcodes.php:146 ../../SiDi_Shortcodes.php:151
-#: ../../SiDi_Shortcodes.php:157 ../../SiDi_Shortcodes.php:159
+#: ../../SiDi_Shortcodes.php:147 ../../SiDi_Shortcodes.php:150
+#: ../../SiDi_Shortcodes.php:152 ../../SiDi_Shortcodes.php:158
+#: ../../SiDi_Shortcodes.php:160
 msgid "Cover : "
 msgstr "Couverture : "
 
