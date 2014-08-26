@@ -245,7 +245,8 @@ function sidi_the_content_filter( $content ) {
             }
             $return_string .='</div>';
 
-            $return_string .='<div class="sidi-cover"><img src="'.(empty($cover['url'])?plugins_url( 'includes/images/no-cover.png' , __FILE__ ):$cover['url']).'" ></div>';
+            $cover_size = array(150,150);
+            $return_string .='<div class="sidi-cover">'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('alt'=>__('Cover : ','sidi').get_the_title())).'</div>';
             $return_string .='<div class="sidi-descip">'.$content.'</div>';
             $return_string .='</div>';
             $discs=get_post_meta( $id, DISCS, true );
