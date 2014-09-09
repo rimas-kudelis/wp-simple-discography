@@ -108,7 +108,6 @@ function sidi_save_disk_meta($post_id, $post) {
                         $date_form=SiDi_I18N_DateTime::createFromFormat (get_option( 'date_format' ), $sidi_post[$key]);
                         $date_form->setTime(0, 0, 0);
                         $sidi_post[$key]=$date_form->getTimestamp();
-
                     }
 
 //                var_dump( $sidi_post[$key]);
@@ -133,6 +132,10 @@ function sidi_save_disk_meta($post_id, $post) {
             if(substr($key,0,10)!=DISCS){
                 if($key==COVER){
                     $value=json_decode(stripslashes($value),true);
+                }elseif($key==RELEASE){
+                    $date_form=SiDi_I18N_DateTime::createFromFormat (get_option( 'date_format' ), $value);
+                    $date_form->setTime(0, 0, 0);
+                    $value=$date_form->getTimestamp();
                 }
                 add_post_meta($post->ID, $key, $value);
             }else{
