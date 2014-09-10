@@ -75,6 +75,14 @@ For each album, you will be able to provide the following data:
 
 == Changelog ==
 
+= 1.2.4 =
+
+* Fix the order_by for the value "release" with the help of John Leblanc
+
+= 1.2.3 =
+
+* Fix save release date during create a new album
+
 = 1.2.2 =
 
 * Fix compatibility with auther plugin
