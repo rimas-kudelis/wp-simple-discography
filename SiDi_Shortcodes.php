@@ -98,7 +98,7 @@ function sidi_discography_function($atts=array()) {
         'date'      => array('orderby'   => 'post_date'),
         'modified'  => array('orderby'   => 'post_modified'),
         'release'   => array(
-            'orderby'   => 'meta_value',
+            'orderby'   => 'meta_value_num',
             'meta_key'  => RELEASE
         )
     );
@@ -113,9 +113,9 @@ function sidi_discography_function($atts=array()) {
         if(isset($order_by[$value])){
             if ($value!='rand')
                 $order=true;
-            if($order_by[$value]['orderby']=='meta_value'){
+            if($order_by[$value]['orderby']=='meta_value_num'){
                 if(!$meta_value){
-                    $query['orderby'][]='meta_value';
+                    $query['orderby'][]='meta_value_num';
                     $meta_value=true;
                 }
                 $query['meta_key'][]=$order_by[$value]['meta_key'];
