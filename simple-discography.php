@@ -112,6 +112,7 @@ function sidi_register_dick() {
         'menu_icon'          => 'dashicons-playlist-audio',
         'publicly_queryable' => true,
         'show_ui'            => true,
+        'show_in_nav_menus'  => true,
         'show_in_menu'       => true,
         'query_var'          => 'discography',
         'rewrite'            => array( 'slug' => 'discography' ),
@@ -120,6 +121,7 @@ function sidi_register_dick() {
         'hierarchical'       => false,
         'menu_position'      => 10,
         'supports'           => $support,
+        'taxonomies'         => array( 'category', 'post_tag' ),
         'exclude_from_search' => false,
         'register_meta_box_cb' => 'add_disk_metaboxes'
     );
@@ -127,11 +129,12 @@ function sidi_register_dick() {
     register_post_type( PORT_TYPE, $args );
 }
 require_once('SiDi_Discography_Widget.php');
-
+require_once('SiDi_content.php');
 if ( ! is_admin() ) {
     require_once('SiDi_Shortcodes.php');
 }else{
     require_once('SiDi_Posts.php');
+//    require_once('SiDi_Preview.php');
 
 }
 

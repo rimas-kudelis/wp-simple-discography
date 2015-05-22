@@ -12,7 +12,6 @@ add_action( 'init', 'register_shortcodes');
 function register_shortcodes(){
     add_shortcode('sidi-discography', 'sidi_discography_function');
 }
-//function sidi_discography_function() {
 function sidi_discography_function($atts=array()) {
     wp_enqueue_style( 'front-style', plugins_url( 'includes/css/front.css' , __FILE__ ), true);
     wp_enqueue_script( 'jquery-scrollTo', plugins_url( 'includes/js/jquery.scrollTo.min.js', __FILE__ ), array( 'jquery' ) );
@@ -24,11 +23,13 @@ function sidi_discography_function($atts=array()) {
         'order'         => 'DESC',
         'dynamic'       => 1,
         'show_song'     => 1,
-        'show_title'     => 1,
+        'show_title'    => 1,
+        'show_all'      => 0,
         'display'       => 'list',
         'cover_height'  => 150,
         'cover_width'   => 150,
-        'id'            =>''
+        'id'            =>'',
+        'filter'        =>'',
     ), $atts, 'sidi-discography' );
 //var_dump($atts['dynamic'], $atts['show_song']);
     if ( $atts['show_song'] === 'false' ) $atts['show_song'] = false; // just to be sure...
@@ -37,6 +38,8 @@ function sidi_discography_function($atts=array()) {
     $dynamic = (bool) $atts['dynamic'];
     if ( $atts['show_title'] === 'false' ) $atts['show_title'] = false; // just to be sure...
     $show_title = (bool) $atts['show_title'];
+    if ( $atts['show_all'] === 'false' ) $atts['show_all'] = false; // just to be sure...
+    $show_song = (bool) $atts['show_all'];
     if ( $atts['order'] != 'ASC' ) $atts['order'] = 'DESC';
     if ( $atts['display'] != 'thumbnail' ) $atts['display'] = 'list';
     if($atts['display'] == 'thumbnail' ) $dynamic=true;
@@ -54,13 +57,13 @@ function sidi_discography_function($atts=array()) {
                 $complement=21;
                 if($show_title)
                     $complement+=20;
-                $style_content = ' style="margin-top: '.($cover_height+$complement).'px;"';
+                $style_content .= 'margin-top: '.($cover_height+$complement).'px; ';
             }
         }
         if($cover_width!==150){
             $style_cover.='width: '.$cover_width.'px; ';
             $style_cover_img.='max-width: '.$cover_width.'px; ';
-            $style_content = ' style="margin-left: '.($cover_height+20).'px;"';
+            $style_content .= 'margin-left: '.($cover_height+20).'px; ';
         }
         $style_cover=rtrim($style_cover).'"';
         $style_cover_img=trim($style_cover_img).'"';
@@ -72,6 +75,8 @@ function sidi_discography_function($atts=array()) {
 
         $select_id=(empty($atts['id'])?'':$atts['id'].'_').'alb';
         $show_id=(empty($_GET[$select_id])?-1:intval($_GET[$select_id], 10));
+        if($show_id == -1 && !empty($atts['id']))
+            $show_id = $atts['id'];
         $current_url=esc_url_raw(( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
         $current_url=explode('?',$current_url);
         if(count($current_url)==1){
@@ -106,6 +111,21 @@ function sidi_discography_function($atts=array()) {
 //        'meta_key' => 'post_title',
 //        'orderby' => 'meta_value',
 //        'order' => 'DESC' ) ;
+
+    if(!empty($atts['filter'])){
+        $atts['filter']=explode(',',$atts['filter']);
+        foreach($atts['filter'] as $key=> $val){
+            $cat = intval($val, 10);
+            if($cat ==0)
+                unset($atts['filter'][$key]);
+            else
+                $atts['filter'][$key] = $cat;
+        }
+        if(count($atts['filter'])){
+            $query['category__in']= $atts['filter'];
+        }
+    }
+
     $atts['order_by']=explode(' ',$atts['order_by']);
     $order=false;
     $meta_value=false;
@@ -134,7 +154,6 @@ function sidi_discography_function($atts=array()) {
 
     $query = new WP_Query($query);
     $return_string='<div'.$sidi_id.' class="sidi"><ul class="sidi-'.$atts['display'].'">';
-//    var_dump($dynamic&&!empty($discs), $dynamic, $show_song);
     $cover_size=array($cover_width,$cover_height);
     while ($query->have_posts()) {
         $query->the_post();
@@ -171,7 +190,7 @@ function sidi_discography_function($atts=array()) {
         }
 
 
-        $return_string .='<div class="sidi-content"'.$style_content.'>';
+        $return_string .='<div class="sidi-content"'.(empty($style_content)?"":' style="'.$style_content.'"').'>';
         $return_string .='<div class="sidi-header clearfix">';
         if($show_title)
             $return_string .= '<H2 class="sidi-album-title"><a href="'.get_permalink().'">'.get_the_title().'</a></H2>';
@@ -181,8 +200,6 @@ function sidi_discography_function($atts=array()) {
         }
         $return_string .='</div>';
         $return_string .='<div class="sidi-excerpt">'. get_the_excerpt().'</div>';
-//        $return_string .='<div class="sidi-excerpt">'.preg_replace('/(\[.*?\])/i', '<a href="'.get_permalink().'">$1</a>', get_the_excerpt()).'</div>';
-//        $discs=get_post_meta( $query->post->ID, DISCS, true );
         if(!empty($discs) && $show_song){
             $multi_discs=(count($discs)>1)?true:false;
             $return_string .='<div class="sidi-discs">';
@@ -206,69 +223,12 @@ function sidi_discography_function($atts=array()) {
         $return_string .='</li>';
     }
     $return_string.="</ul></div>";
+
+    if($query->max_num_pages >1 and $atts['show_all']){
+        $return_string .='<div class="sidi-show-all"><a href="'.esc_url( get_permalink( get_page_by_path( PORT_TYPE ) ) ).'"  >'.__('Show all','sidi').'</a></div>';
+    }
+
     wp_reset_postdata();
     return $return_string;
 
-}
-function sidi_get_cover_image($attachement_id, $size=array(150,150), $attr=array()){
-    $cover=$attachement_id!=0?wp_get_attachment_image_src($attachement_id, $size):false;
-    if($cover==false){
-        $cover=array(
-            plugins_url( 'includes/images/no-cover.png' , __FILE__ ),
-            $size[0],
-            $size[1]
-        );
-    }
-    foreach($attr as $key=>&$val)
-        $val=$key.'="'.esc_attr($val).'"';
-    unset($val);
-    $attr= ' '.implode(' ', $attr);
-    return '<img width="'.$cover[1].'" height="'.$cover[2].'" src="'.$cover[0].'" class="attachment-'.$cover[1].'x'.$cover[2].'"'.$attr.'/>';
-}
-add_filter( 'the_content', 'sidi_the_content_filter', 20 );
-function sidi_the_content_filter( $content ) {
-
-    global $post;
-    if ( is_single()){
-        if (is_singular( PORT_TYPE )) {
-            wp_enqueue_style( 'front-style', plugins_url( 'includes/css/front.css' , __FILE__ ), true);
-            $id= get_the_ID();
-            $return_string ='<div class="sidi"><div id="sidi-'.$id.'" class="sidi-single sidi-list">';
-
-            $cover=get_post_meta( $id, COVER, true );
-            $return_string .='<div class="sidi-content clearfix">';
-            $return_string .='<div class="sidi-header clearfix">';
-//            $return_string .= '<H2 class="sidi-album-title"><a href="'.get_permalink().'">'.get_the_title().'</a></H2>';
-            $release=get_post_meta( $id, RELEASE, true );
-            if(!empty($release)){
-                $return_string .= '<span class="sidi-release">'.esc_html(SiDi_I18N_DateTime::date('Y',$release)).'</span>';
-            }
-            $return_string .='</div>';
-
-            $cover_size = array(150,150);
-            $return_string .='<div class="sidi-cover">'.sidi_get_cover_image(empty($cover['id'])?0:$cover['id'], $cover_size, array('alt'=>__('Cover : ','sidi').get_the_title())).'</div>';
-            $return_string .='<div class="sidi-descip">'.$content.'</div>';
-            $return_string .='</div>';
-            $discs=get_post_meta( $id, DISCS, true );
-            if(!empty($discs)){
-                $multi_discs=(count($discs)>1)?true:false;
-                $return_string .='<div class="sidi-discs">';
-                $return_string .='<span class="arrow"></span>';
-                foreach($discs as $disk => $tracks){
-                    $return_string .='<div class="sidi-disk">';
-                    if($multi_discs)
-                        $return_string .='<H3 class="sidi-num-disk">'.__('Disk n : ','sidi').$disk.'</H3>';
-                    $return_string .='<ul class="sidi-tracks">';
-                    foreach($tracks as $key => $track){
-                        $return_string .='<li class="sidi-track list-style-none"><span class="sidi-num-track">'.$track['track'].'</span>'.(empty($track['time'])?'':'<span class="sidi-time-track">'.$track['time'].'</span>').'<span class="sidi-title-track'.(empty($track['time'])?' sidi-notime-track':'').'">'.$track['title'].'</span></li>';
-                    }
-                    $return_string .='</ul></div>';
-                }
-                $return_string .='</div>';
-            }
-            $return_string .='</div></div>';
-            $content=$return_string;
-        }
-    }
-    return $content;
 }

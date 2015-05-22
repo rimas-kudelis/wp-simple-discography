@@ -23,12 +23,6 @@ class SiDi_Widget_Form extends WP_Widget {
 
     public function text($key, $value=null, $class="", $title ="", $attr=array() ){
         return $this->Gen_Form->text($this->get_field_name( $key ), $this->get_field_id( $key ), $value, $this->init_class($this->default_class,$class), $title, $attr );
-        /*        ?>
-        <p>
-                    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-        </p>
-        <?php*/
     }
     public function select($key, $options, $value=null, $class="", $title ="", $attr=array() ){
         return $this->Gen_Form->select($this->get_field_name( $key ), $this->get_field_id( $key ), $options, $value, $this->init_class($this->default_class, $class), $title, $attr );
@@ -36,12 +30,6 @@ class SiDi_Widget_Form extends WP_Widget {
 
     public function checkbox($key, $options=1, $value=null, $class="", $title ="", $attr=array() ){
         return $this->Gen_Form->checkbox($this->get_field_name( $key ), $this->get_field_id( $key ), $options, $value, $this->init_class("checkbox", $class), $title, $attr );
-
-//        $return ='<p'. $style .'><input '. $class .'id="'. $this->get_field_id( $fieldID ).'" type="checkbox" name="'. $this->get_field_name( $fieldID ) .'" value="1" '. checked( 1, $instance[$fieldID], false ) .'/> <label for="'. $this->get_field_id( $fieldID ) .'">'. $args['label'] .'</label></p>';
-//        p>
-//<label for="widget-em_calendar-3-long_events">Événements longue durée ?: </label>
-//<input id="widget-em_calendar-3-long_events" type="checkbox" value="1" name="widget-em_calendar[3][long_events]">
-//</p>
     }
 
     public function number($key, $value=null, $class="", $title ="", $attr=array() ){

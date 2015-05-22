@@ -14,11 +14,11 @@ function sidi_save_post() {
     add_action('save_post', 'sidi_save_disk_meta', 10, 2); // save the custom fields
 }
 // Add the Events Meta Boxes
-function add_disk_metaboxes() {
+function add_disk_metaboxes($post_id ) {
+    set_post_format($post_id, 'standard' );
     add_action( 'admin_enqueue_scripts', 'sidi_enqueue' );
     add_meta_box('sidi_disk_info', __('Info Album','sidi'), 'sidi_disk_info', 'discography', 'side', 'high');
     add_meta_box('sidi_disk_tracks', __('Song of Album','sidi'), 'sidi_disk_trak', 'discography', 'normal', 'high');
-
 }
 // The Disk Info Metabox
 function sidi_disk_info() {
@@ -103,14 +103,11 @@ function sidi_save_disk_meta($post_id, $post) {
                 if($key==COVER){
                     $sidi_post[$key]=json_decode(stripslashes($sidi_post[$key]),true);
                 }elseif($key==RELEASE){
-//                    $sidi_post[$key]=translate_to_english($sidi_post[$key]);
                     if(!empty($sidi_post[$key])){
                         $date_form=SiDi_I18N_DateTime::createFromFormat (get_option( 'date_format' ), $sidi_post[$key]);
                         $date_form->setTime(0, 0, 0);
                         $sidi_post[$key]=$date_form->getTimestamp();
                     }
-
-//                var_dump( $sidi_post[$key]);
                 }
                 if(empty($sidi_post[$key])){
                     delete_post_meta($post->ID, $key);
@@ -178,3 +175,5 @@ function sidi_save_disk_meta($post_id, $post) {
     }
 
 }
+
+

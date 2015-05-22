@@ -3,8 +3,8 @@ Contributors: Sébastien Batteur
 Donate link: http://www.batteur.be
 Tags: artist, music, discography, music manage, Album, song, track, cover, photos, music photos, genesis
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.2.4
+Tested up to: 4.2
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ For each album, you will be able to provide the following data:
 
 1. sidi-discography :
 
-  [sidi-discography posts_per_page=-1 date_format"'y" order_by="release" order="DESC" dynamic=1 show_song=1 show_title=1 display="list" cover_width=150 cover_height=150 id=""]
+  [sidi-discography posts_per_page=-1 date_format="y" order_by="release" order="DESC" dynamic=1 show_song=1 show_title=1 display="list" cover_width=150 cover_height=150 id="" filter="" show_all=0 ]
 
   * parameter :
     * posts_per_page : default : -1 (all) value : -1, 1, 2, 3, 4,...
@@ -41,6 +41,8 @@ For each album, you will be able to provide the following data:
     * cover_width : default : 150 value : 1, 2, 3, 4,...
     * cover_height : default : 150 value : 1, 2, 3, 4,...
     * id : default : "" value : string : if you use more than one sidi-discography on a page
+    * filter : default : "" value : "2" ou "3,6" : Displays only the albums that are in the mentioned categories
+    * show_all : default : 0 value : 0, 1 : Displays a link to the discography page if all the albums of the selection are not displayed
 
 
 = Main Features =
@@ -74,6 +76,14 @@ For each album, you will be able to provide the following data:
 10. Used ShortCode sidi-discography
 
 == Changelog ==
+
+= 1.3 =
+
+* Add category and tag
+* Add filter category on widget and shortcode
+* Add option show_all on widget and shortcode
+* set standart format of album descrition
+* fix small bug
 
 = 1.2.4 =
 

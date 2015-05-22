@@ -13,13 +13,11 @@ function register_SiDi_Discography_Widget() {
 add_action( 'widgets_init', 'register_SiDi_Discography_Widget' );
 
 require_once('classes/SiDi_Widget_Form.php');
-//add_action('widgets_init', create_function('', 'return register_widget("SiDi_Discography_Widget");'));
 /**
  * Adds Foo_Widget widget.
  */
 class SiDi_Discography_Widget extends SiDi_Widget_Form {
 
-    protected $defaults;
     protected $values;
 
     /**
@@ -27,18 +25,6 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
      */
     function SiDi_Discography_Widget() {
 
-        $this->defaults = array(
-            'posts_per_page' => 0,
-            'date_format'   => "Y",
-            'order_by'      => 'release',
-            'order'         => 'DESC',
-            'dynamic'       => 1,
-            'show_song'     => 1,
-            'display'       => 'list',
-            'cover_height'  => 150,
-            'cover_width'   => 150,
-            'show_title'     => 1,
-        );
         $this->values = array(
             'display'           => array(
                 'label'     => __('Type Display : ', 'sidi'),
@@ -63,18 +49,6 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
                 'label'     => __('Format Date Display: ', 'sidi'),
                 'default'   => 'Y',
                 'type'      => 'text'),
-            'order_by'              => array(
-                'label'     => __('Order By: ', 'sidi'),
-                'default'   => 'release',
-                'type'      => 'select',
-                'values'    => array(
-                    'date'      => __('Date of Create Album', 'sidi'),
-                    'modified'  => __('Date of Modified Album', 'sidi'),
-                    'rand'      => __('Random', 'sidi'),
-                    'release'   => __('Date of Release', 'sidi'),
-                    'title'     => __('Title', 'sidi')
-                )
-            ),
             'cover_height'    => array(
                 'label'     => __('Cover Height: ', 'sidi'),
                 'default'   => 150,
@@ -95,6 +69,22 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
                     'max' =>999,
                     'size' =>3,
                     'step'  =>10,
+                )
+            ),
+            'filter'       => array(
+                'label'     => __('Category IDs ( 2,6 or 4) : ', 'sidi'),
+                'default'   => '',
+                'type'      => 'text'),
+            'order_by'              => array(
+                'label'     => __('Order By: ', 'sidi'),
+                'default'   => 'release',
+                'type'      => 'select',
+                'values'    => array(
+                    'date'      => __('Date of Create Album', 'sidi'),
+                    'modified'  => __('Date of Modified Album', 'sidi'),
+                    'rand'      => __('Random', 'sidi'),
+                    'release'   => __('Date of Release', 'sidi'),
+                    'title'     => __('Title', 'sidi')
                 )
             ),
             'order'             => array(
@@ -121,6 +111,12 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
             'show_title'         => array (
                 'label'     => __('Show the Titles : ', 'sidi'),
                 'default'   => 1,
+                'type'      => 'checkbox',
+                'values'    => 1
+            ),
+            'show_all'      => array (
+                'label'     => __('Show like to all albums : ', 'sidi'),
+                'default'   => 0,
                 'type'      => 'checkbox',
                 'values'    => 1
             )
@@ -159,7 +155,6 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
                 $shortcode.= ' '.$key.='="'.$instance[$key].'"';
         }
         $shortcode.= ']';
-//        var_dump($shortcode);
 
         echo do_shortcode($shortcode);
         echo $args['after_widget'];
@@ -179,7 +174,6 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
         else {
             $title = __( 'New title', 'text_domain' );
         }
-//        WP_parse_args($instance,$this->defaults);
         $values=array('title'=>array(
                 'label' => __( 'Title:' ),
                 'default' => '',
@@ -208,17 +202,18 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-        $instance['posts_per_page']     = ( isset( $new_instance['posts_per_page'] ) ) ? abs(intval($new_instance['posts_per_page'],10)) :0;
-        $instance['cover_height']       = ( isset( $new_instance['cover_height'] ) ) ? abs(intval($new_instance['cover_height'],10)) :0;
-        $instance['cover_width']        = ( isset( $new_instance['cover_width'] ) ) ? abs(intval($new_instance['cover_width'],10)) :0;
-        $instance['date_format']        = ( isset( $new_instance['date_format'] ) ) ? strip_tags( $new_instance['date_format'] ):'Y';
-        $instance['order_by']           = ( ! empty( $new_instance['order_by'] ) ) ? (array_key_exists($new_instance['order_by'], $this->values['order_by']['values'])? $new_instance['order_by'] : $this->values['order_by']['default']) :$this->values['order_by']['default'];
-        $instance['order']              = ( ! empty( $new_instance['order'] ) ) ? (array_key_exists($new_instance['order'], $this->values['order']['values'])? $new_instance['order'] : $this->values['order']['default']) :$this->values['order']['default'];
-        $instance['dynamic']            = ( isset( $new_instance['dynamic'] ) ) ? abs(intval($new_instance['dynamic'],10)):0;
-        $instance['show_song']          = ( isset( $new_instance['show_song'] ) ) ? abs(intval($new_instance['show_song'],10)):0;
-        $instance['show_title']          = ( isset( $new_instance['show_title'] ) ) ? abs(intval($new_instance['show_title'],10)):0;
-        $instance['display']            = ( ! empty( $new_instance['display'] ) ) ? (array_key_exists($new_instance['display'], $this->values['display']['values'])? $new_instance['display'] : $this->values['display']['default']) :$this->values['display']['default'];
-//var_dump($new_instance, $instance);
+        $instance['posts_per_page']     = ( isset( $new_instance['posts_per_page'] ) )  ? abs(intval($new_instance['posts_per_page'],10)) :0;
+        $instance['cover_height']       = ( isset( $new_instance['cover_height'] ) )    ? abs(intval($new_instance['cover_height'],10)) :0;
+        $instance['cover_width']        = ( isset( $new_instance['cover_width'] ) )     ? abs(intval($new_instance['cover_width'],10)) :0;
+        $instance['date_format']        = ( isset( $new_instance['date_format'] ) )     ? strip_tags( $new_instance['date_format'] ):'Y';
+        $instance['filter']             = ( isset( $new_instance['filter'] ) )          ? strip_tags( $new_instance['filter'] ):'';
+        $instance['order_by']           = ( ! empty( $new_instance['order_by'] ) )      ? (array_key_exists($new_instance['order_by'], $this->values['order_by']['values'])? $new_instance['order_by'] : $this->values['order_by']['default']) :$this->values['order_by']['default'];
+        $instance['order']              = ( ! empty( $new_instance['order'] ) )         ? (array_key_exists($new_instance['order'], $this->values['order']['values'])? $new_instance['order'] : $this->values['order']['default']) :$this->values['order']['default'];
+        $instance['dynamic']            = ( isset( $new_instance['dynamic'] ) )         ? abs(intval($new_instance['dynamic'],10)):0;
+        $instance['show_song']          = ( isset( $new_instance['show_song'] ) )       ? abs(intval($new_instance['show_song'],10)):0;
+        $instance['show_title']         = ( isset( $new_instance['show_title'] ) )      ? abs(intval($new_instance['show_title'],10)):0;
+        $instance['show_all']           = ( isset( $new_instance['show_all'] ) )        ? abs(intval($new_instance['show_all'],10)):0;
+        $instance['display']            = ( ! empty( $new_instance['display'] ) )       ? (array_key_exists($new_instance['display'], $this->values['display']['values'])? $new_instance['display'] : $this->values['display']['default']) :$this->values['display']['default'];
         return $instance;
     }
 
