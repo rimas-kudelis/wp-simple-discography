@@ -136,3 +136,4 @@ Initial release.
 * shortcode
   * add new single album shortcode
   * add "Simple list" for display type
+
