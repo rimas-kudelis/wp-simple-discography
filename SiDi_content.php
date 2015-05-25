@@ -18,7 +18,6 @@ function sidi_the_content_filter( $content ) {
             $cover=get_post_meta( $id, COVER, true );
             $return_string .='<div class="sidi-content clearfix">';
             $return_string .='<div class="sidi-header clearfix">';
-//            $return_string .= '<H2 class="sidi-album-title"><a href="'.get_permalink().'">'.get_the_title().'</a></H2>';
             $release=get_post_meta( $id, RELEASE, true );
             if(!empty($release)){
                 $return_string .= '<span class="sidi-release">'.esc_html(SiDi_I18N_DateTime::date('Y',$release)).'</span>';
