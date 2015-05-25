@@ -134,6 +134,7 @@ if ( ! is_admin() ) {
     require_once('SiDi_Shortcodes.php');
 }else{
     require_once('SiDi_Posts.php');
+    
 }
 
 
