@@ -10,12 +10,15 @@ require_once('classes/SiDi_Generat_Form.php');
 add_action( 'init', 'sidi_save_post' );
 
 function sidi_save_post() {
+    global $typenow, $post;
+    if( $typenow == PORT_TYPE ) {
+        set_post_format($post->id, 'standard' );
+    }
 
-    add_action('save_post', 'sidi_save_disk_meta', 10, 2); // save the custom fields
+    add_action('save_post_'.PORT_TYPE, 'sidi_save_disk_meta', 10, 2); // save the custom fields
 }
 // Add the Events Meta Boxes
 function add_disk_metaboxes($post_id ) {
-    set_post_format($post_id, 'standard' );
     add_action( 'admin_enqueue_scripts', 'sidi_enqueue' );
     add_meta_box('sidi_disk_info', __('Info Album','sidi'), 'sidi_disk_info', 'discography', 'side', 'high');
     add_meta_box('sidi_disk_tracks', __('Song of Album','sidi'), 'sidi_disk_trak', 'discography', 'normal', 'high');

@@ -39,7 +39,7 @@ function sidi_discography_function($atts=array()) {
     if ( $atts['show_title'] === 'false' ) $atts['show_title'] = false; // just to be sure...
     $show_title = (bool) $atts['show_title'];
     if ( $atts['show_all'] === 'false' ) $atts['show_all'] = false; // just to be sure...
-    $show_song = (bool) $atts['show_all'];
+    $show_all = (bool) $atts['show_all'];
     if ( $atts['order'] != 'ASC' ) $atts['order'] = 'DESC';
     if ( $atts['display'] != 'thumbnail' ) $atts['display'] = 'list';
     if($atts['display'] == 'thumbnail' ) $dynamic=true;
@@ -224,7 +224,7 @@ function sidi_discography_function($atts=array()) {
     }
     $return_string.="</ul></div>";
 
-    if($query->max_num_pages >1 and $atts['show_all']){
+    if($query->max_num_pages >1 and $show_all){
         $return_string .='<div class="sidi-show-all"><a href="'.esc_url( get_permalink( get_page_by_path( PORT_TYPE ) ) ).'"  >'.__('Show all','sidi').'</a></div>';
     }
 
