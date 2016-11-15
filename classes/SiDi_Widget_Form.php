@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sebastien
- * Date: 13/08/2014
- * Time: 12:44
- */
+
 require_once ('SiDi_General_Form.php');
 
 class SiDi_Widget_Form extends WP_Widget {
@@ -60,4 +55,4 @@ class SiDi_Widget_Form extends WP_Widget {
         }
         return $return;
     }
-} 
+}

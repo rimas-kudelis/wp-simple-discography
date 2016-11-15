@@ -153,15 +153,15 @@ msgstr "Aujourd'hui"
 
 #: ../../SiDi_Posts.php:81 ../../SiDi_Shortcodes.php:211
 #: ../../SiDi_content.php:40
-msgid "Disk n : "
+msgid "Disc #"
 msgstr "Disque N° :"
 
 #: ../../SiDi_Posts.php:81
-msgid "Add New Disk"
+msgid "Add New Disc"
 msgstr "Ajouter un Disque"
 
 #: ../../SiDi_Posts.php:81
-msgid "Delete this Disk"
+msgid "Delete this Disc"
 msgstr "Supprimer ce Disque"
 
 #: ../../SiDi_Posts.php:81
@@ -259,23 +259,21 @@ msgstr "Aucun Albums trouvée dans la corbeille."
 #~ msgid "Discs"
 #~ msgstr "Albums"
 
-#~ msgid "Disk"
+#~ msgid "Disc"
 #~ msgstr "Album"
 
-#~ msgid "New Disk"
+#~ msgid "New Disc"
 #~ msgstr "Nouveau Disque"
 
-#~ msgid "Edit Disk"
+#~ msgid "Edit Disc"
 #~ msgstr "Modifier Disque"
 
-#~ msgid "View Disk"
+#~ msgid "View Disc"
 #~ msgstr "Afficher Disque"
 
 #~ msgid "All Discs"
 #~ msgstr "Tous les Disques"
 
-#~ msgid "Info Disk"
+#~ msgid "Info Disc"
 #~ msgstr "Indo Album"
 
-#~ msgid "Add New Dick"
-#~ msgstr "Ajouter un nouvel Disque"

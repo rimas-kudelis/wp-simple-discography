@@ -36,10 +36,10 @@ html>body .sortable li { height: 1.9em; line-height: 1.4em; }
     text-align: right;
     width: 37px;
 }
-.sidi-traks li .sidi-track-num:hover {
+.sidi-tracks li .sidi-track-num:hover {
     cursor: pointer;
 }
-.sidi-traks li.ui-sortable-helper .sidi-track-num{
+.sidi-tracks li.ui-sortable-helper .sidi-track-num{
     cursor: move;
 }
 .sidi-track-cente {

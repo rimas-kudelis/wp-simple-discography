@@ -217,4 +217,4 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
         return $instance;
     }
 
-} // class Foo_Widget
+} // class SiDi_Discography_Widget

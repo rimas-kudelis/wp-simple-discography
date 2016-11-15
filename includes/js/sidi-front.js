@@ -47,7 +47,7 @@ jQuery(document).ready(function ($) {
         var sidiSilde = function(clicked, div, scrollTo, addFunction){
             var classShow='discs-show',
                 classHidden='discs-hidden';
-            var disk=$(clicked).closest('.sidi-album'),
+            var disc=$(clicked).closest('.sidi-album'),
                 url=$(clicked).attr('href'),
                 pg=$(clicked).closest('.sidi').attr('id');
             if(typeof pg ==='undefined' || pg.length==0)
@@ -63,28 +63,28 @@ jQuery(document).ready(function ($) {
                 s = '?'+s.substring(1);
             url=location.origin+location.pathname+location.hash
 
-            if(disk.hasClass(classShow)){
-                $(div,disk).slideUp(400)
-                disk.removeClass(classShow).addClass(classHidden);
+            if(disc.hasClass(classShow)){
+                $(div,disc).slideUp(400)
+                disc.removeClass(classShow).addClass(classHidden);
                 if(thumbnail.length)
-                    disk.height('')
+                    disc.height('')
 
                 pushState(url+s);
             }else{
-                disk.parent().find('.'+classShow).each(function(){
+                disc.parent().find('.'+classShow).each(function(){
                     var self=$(this);
                     $(div,self).slideUp(400)
                     self.removeClass(classShow).addClass(classHidden);
                     if(thumbnail.length)
                         self.height('')
                 })
-                $(div,disk).slideDown(400, function(){
+                $(div,disc).slideDown(400, function(){
                     if(typeof addFunction!=="undefined")
-                        addFunction(disk);
+                        addFunction(disc);
                     if(typeof scrollTo!=="undefined")
-                        $.scrollTo($(scrollTo, disk),400);
+                        $.scrollTo($(scrollTo, disc),400);
                 })
-                disk.removeClass(classHidden).addClass(classShow);
+                disc.removeClass(classHidden).addClass(classShow);
                 var id = $(clicked).closest('.sidi-album').attr('id').replace(/^sidi-/i,'');
 
                 s=s+'&'+pg+'alb'+'='+id;

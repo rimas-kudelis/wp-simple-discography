@@ -3,27 +3,6 @@
  */
 
 jQuery(document).ready(function ($) {
-// Check to make sure the input box exists
-    var datepicker=$('.datepicker')
-    if( 0 < datepicker.length ) {
-//        datepicker.datepicker({
-//            dateFormat : 'dd/mm/yy'
-//        });
-        datepicker.datepicker({
-            // Show the 'close' and 'today' buttons
-            showButtonPanel: true,
-            closeText: objectL10n.closeText,
-            currentText: objectL10n.currentText,
-            monthNames: objectL10n.monthNames,
-            monthNamesShort: objectL10n.monthNamesShort,
-            dayNames: objectL10n.dayNames,
-            dayNamesShort: objectL10n.dayNamesShort,
-            dayNamesMin: objectL10n.dayNamesMin,
-            dateFormat: objectL10n.dateFormat,
-            firstDay: objectL10n.firstDay,
-            isRTL: objectL10n.isRTL,
-        });
-    } // end if
     // Instantiates the variable that holds the media library frame.
     var meta_image_frame;
     var key=meta_image.key;
@@ -182,38 +161,38 @@ jQuery(document).ready(function ($) {
 
     var sidiAlbum=$('.sidi-album');
     if(sidiAlbum.length){
-        $(sidiAlbum).on('click', '.sidi-add-disk', function(){
-            console.log('.sidi-add-disk');
-            var sidiNewDisk=$('#sidi-new-disk',sidiAlbum);
-            var newDisk=$(sidiNewDisk.html());
+        $(sidiAlbum).on('click', '.sidi-add-disc', function(){
+            console.log('.sidi-add-disc');
+            var sidiNewDisc=$('#sidi-new-disc',sidiAlbum);
+            var newDisc=$(sidiNewDisc.html());
             var key=sidiAlbum.attr('id');
-            sidiNewDisk.data('current', sidiNewDisk.data('current')+1);
-            sidiNewDisk.data('new', sidiNewDisk.data('new')+1);
-            var diskNumber=sidiNewDisk.data('current'),
-                diskNew=sidiNewDisk.data('new'),
-                idNew=key+'-'+ diskNew
-            $(newDisk).attr('id', idNew)
-            $('p label b span',newDisk).first().text(diskNumber)
-            $('.sidi-disk-number',newDisk).val(diskNumber).attr('id',idNew+'-0-disk').attr('name',idNew+'-0-disk')
+            sidiNewDisc.data('current', sidiNewDisc.data('current')+1);
+            sidiNewDisc.data('new', sidiNewDisc.data('new')+1);
+            var discNumber=sidiNewDisc.data('current'),
+                discNew=sidiNewDisc.data('new'),
+                idNew=key+'-'+ discNew
+            $(newDisc).attr('id', idNew)
+            $('p label b span',newDisc).first().text(discNumber)
+            $('.sidi-disc-number',newDisc).val(discNumber).attr('id',idNew+'-0-disc').attr('name',idNew+'-0-disc')
 
-            $( ".sortable", newDisk).sortable({
+            $( ".sortable", newDisc).sortable({
                 placeholder: "ui-state-highlight"
             });
-            sidiAlbum.append(newDisk);
+            sidiAlbum.append(newDisc);
 
         })
-        $(sidiAlbum).on('click','.sidi-del-disk', function(){
-            console.log('.sidi-del-disk');
+        $(sidiAlbum).on('click','.sidi-del-disc', function(){
+            console.log('.sidi-del-disc');
             var parent=$(this).parent(),
                 i= 0;
             parent.remove();
-            var sidiNewDisk=$('#sidi-new-disk',sidiAlbum);
-            sidiNewDisk.data('current', sidiNewDisk.data('current')-1);
+            var sidiNewDisc=$('#sidi-new-disc',sidiAlbum);
+            sidiNewDisc.data('current', sidiNewDisc.data('current')-1);
             $('.sidi-discs',sidiAlbum).filter(":visible").each(function(){
                 var self=$(this);
                 i++;
                 $('p label b span',self).first().text(i);
-                $('.sidi-disk-number',self).val(i);
+                $('.sidi-disc-number',self).val(i);
 
                 var tabindex=i*100;
                 $('.sidi-track',self).filter(":visible").each(function(){
@@ -226,14 +205,14 @@ jQuery(document).ready(function ($) {
         $(sidiAlbum).on('click', '.sidi-add-track', function(){
             console.log('.sidi-add-track');
 //            console.log($(this).parent('div'));
-            var disk=$(this).parent(),
-                idDisk=disk.attr('id'),
-                sidiNewTrack=$('.sidi-new-track',disk),
+            var disc=$(this).parent(),
+                idDisc=disc.attr('id'),
+                sidiNewTrack=$('.sidi-new-track',disc),
                 trackNumber=sidiNewTrack.data('current')+1,
                 trackNew=sidiNewTrack.data('new')+1,
-                idNew=idDisk+'-'+ trackNew,
+                idNew=idDisc+'-'+ trackNew,
                 newTrack=$($.trim(sidiNewTrack.html())),
-                tabindex=( $('.sidi-disk-number',disk).val()  *100)+(trackNumber-1)*2;
+                tabindex=( $('.sidi-disc-number',disc).val()  *100)+(trackNumber-1)*2;
             sidiNewTrack.data('current',trackNumber)
             sidiNewTrack.data('new',trackNew)
             newTrack.attr('id',idNew);
@@ -242,29 +221,19 @@ jQuery(document).ready(function ($) {
             $('.sidi-track-title',newTrack).attr('id',idNew+'-title').attr('name',idNew+'-title').attr('tabindex',++tabindex)
             $('.sidi-track-time',newTrack).attr('id',idNew+'-time').attr('name',idNew+'-time').attr('tabindex',++tabindex)
 
-            $('.sidi-traks',disk).append(newTrack);
+            $('.sidi-tracks',disc).append(newTrack);
             console.log($('#'+idNew+' input.sidi-track-time'));
-
-            $('#'+idNew+' input.sidi-track-time').timepicker({
-                controlType: myControl,
-                minuteMax: 999,
-                showHour: false,
-                showSecond: true,
-                timeFormat: 'mm:ss'
-        });
-
-
         })
         $(sidiAlbum).on('click', '.sidi-del-track', function(){
             console.log('.sidi-del-track');
             var parent=$(this).parent(),
-                disk=parent.parent(),
+                disc=parent.parent(),
                 i= 0;
-            var tabindex=$(this).closest('.sidi-discs').find('.sidi-disk-number').val()*100;
+            var tabindex=$(this).closest('.sidi-discs').find('.sidi-disc-number').val()*100;
             parent.remove();
-            var sidiNewTrack=$('.sidi-new-track',disk.parent());
+            var sidiNewTrack=$('.sidi-new-track',disc.parent());
             sidiNewTrack.data('current', sidiNewTrack.data('current')-1);
-            $('.sidi-track',disk).filter(":visible").each(function(){
+            $('.sidi-track',disc).filter(":visible").each(function(){
                 var self=$(this);
                 i++;
                 $('.sidi-track-track',self).val(i);
@@ -277,7 +246,7 @@ jQuery(document).ready(function ($) {
             console.log($(this))
             var i=0;
 
-            var tabindex=$(this).closest('.sidi-discs').find('.sidi-disk-number').val()*100;
+            var tabindex=$(this).closest('.sidi-discs').find('.sidi-disc-number').val()*100;
             $('.sidi-track',$(this)).filter(":visible").each(function(){
                 var self=$(this);
                 i++;
@@ -290,48 +259,6 @@ jQuery(document).ready(function ($) {
         $( ".sortable", sidiAlbum).sortable({
             handle: ".sidi-track-num",
             placeholder: "ui-state-highlight"
-        });
-//        $( ".sidi-track-num" ).disableSelection();
-        var myControl=  {
-            create: function(tp_inst, obj, unit, val, min, max, step){
-                $('<input class="ui-timepicker-input" value="'+val+'" style="width:50%">')
-                    .appendTo(obj)
-                    .spinner({
-                        min: min,
-                        max: max,
-                        step: step,
-                        change: function(e,ui){ // key events
-                            // don't call if api was used and not key press
-                            if(e.originalEvent !== undefined)
-                                tp_inst._onTimeChange();
-                            tp_inst._onSelectHandler();
-                        },
-                        spin: function(e,ui){ // spin events
-                            tp_inst.control.value(tp_inst, obj, unit, ui.value);
-                            tp_inst._onTimeChange();
-                            tp_inst._onSelectHandler();
-                        }
-                    });
-                return obj;
-            },
-            options: function(tp_inst, obj, unit, opts, val){
-                if(typeof(opts) == 'string' && val !== undefined)
-                    return obj.find('.ui-timepicker-input').spinner(opts, val);
-                return obj.find('.ui-timepicker-input').spinner(opts);
-            },
-            value: function(tp_inst, obj, unit, val){
-                if(val !== undefined)
-                    return obj.find('.ui-timepicker-input').spinner('value', val);
-                return obj.find('.ui-timepicker-input').spinner('value');
-            }
-        };
-
-        $('input.sidi-track-time:visible').timepicker({
-            controlType: myControl,
-            minuteMax: 999,
-            showHour: false,
-            showSecond: true,
-            timeFormat: 'mm:ss'
         });
     }
 });

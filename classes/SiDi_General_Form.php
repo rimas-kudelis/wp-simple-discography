@@ -1,17 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sebastien
- * Date: 13/08/2014
- * Time: 11:03
- */
 
 class SiDi_General_From {
 
-    public function SiDi_General_From(){
-        wp_enqueue_script( 'number_script',  plugins_url( 'includes/js/input_number.js', dirname(__FILE__) ), array( 'jquery') );
-
-    }
     public function label($title = "", $for= ""){
         return empty($title)?"":'<label'.(empty($for)?"":' for="'.$for.'"').'>'.$title.'</label>';
 
@@ -70,4 +60,4 @@ class SiDi_General_From {
         return $return;
     }
 
-} 
+}
