@@ -8,9 +8,9 @@ class SiDi_Widget_Form extends WP_Widget {
     private $Gen_Form;
     public $default_class="widefat";
 
-    public function SiDi_Widget_Form($id_base, $name, $widget_options = array(), $control_options = array() ){
+    public function __construct($id_base, $name, $widget_options = array(), $control_options = array() ){
         $this->Gen_Form = new SiDi_General_From();
-        parent::WP_Widget($id_base, $name, $widget_options, $control_options );
+        parent::__construct($id_base, $name, $widget_options, $control_options );
     }
     protected  function init_class($add_class,$class=""){
         return trim($class.' '.$add_class);

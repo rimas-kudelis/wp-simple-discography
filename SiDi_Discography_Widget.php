@@ -23,7 +23,7 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
     /**
      * Register widget with WordPress.
      */
-    function SiDi_Discography_Widget() {
+    function __construct() {
 
         $this->values = array(
             'display'           => array(
@@ -125,7 +125,7 @@ class SiDi_Discography_Widget extends SiDi_Widget_Form {
             "classname"     => 'sidi_discography_widget',
             "description"   => __( 'Displays Albums with their thumbnails', 'sidi' )
         );
-        parent::SiDi_Widget_Form(
+        parent::__construct(
             'sidi_dw', // Base ID
             __('Discography', 'sidi'), // Name
             $options

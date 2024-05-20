@@ -3,7 +3,7 @@
 class SiDi_Generate_Form {
     private $id;
 
-    public function SiDi_Generate_Form($id){
+    public function __construct($id){
         $this->id=$id;
     }
 
@@ -129,7 +129,7 @@ class SiDi_Generate_Form {
 
     }
     public function getTrack($id, $num_disc=0,$track=array(),$delTrack='' ){
-        $track['track']=isset($track['track'])?intval($track['track'],10):0;
+        $track['track']=isset($track['track'])?intval($track['track'],10):1;
         $tabindex=$num_disc.str_pad(($track['track']-1)*2+1,2 ,'0', STR_PAD_LEFT);
         $idTrack=$id.'-'.$track['track'];
         $html='<li id="'.$idTrack.'" class="sidi-track">' ;

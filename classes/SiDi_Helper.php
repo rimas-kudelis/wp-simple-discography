@@ -29,7 +29,7 @@ Class SiDi_Helper {
     /**
      * Validates a release date in 'YYYY[-mm[-dd]]' format (year with optional month and day).
      */
-    function validate_release_date($dateString) {
+    public static function validate_release_date($dateString) {
         $year = $month = $day = 1;
         $dateParts = explode('-', $dateString);
 
@@ -51,7 +51,7 @@ Class SiDi_Helper {
     /**
      * Returns Album cover HTML code
      */
-    function get_cover_image($attachment_id, $size=array(150,150), $attr=array()){
+    public static function get_cover_image($attachment_id, $size=array(150,150), $attr=array()){
 
         $cover = $attachment_id != 0 ? wp_get_attachment_image_src($attachment_id, $size) : false;
         if($cover === false){
